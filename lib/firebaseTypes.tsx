@@ -24,3 +24,8 @@ export interface AppContextPropI {
   folders: FolderI[];
   imgs: ImgI[];
 }
+
+export interface ContextValuesI {
+  folders: FolderI[];
+  getFolderImages: (folderName: string) => ImgI[];
+}
