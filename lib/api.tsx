@@ -1,8 +1,14 @@
 import { collection, getDocs } from "firebase/firestore";
 import { db, storage } from "./firebase";
 import { getDownloadURL, listAll, ref } from "firebase/storage";
+import { AppContextPropI, FolderI, ImgI, SettingsI } from "./firebaseTypes";
 
 export async function fetchFirebaseData() {
+  let data: AppContextPropI = {
+    folders: [],
+    imgs: [],
+    settings: { portfolioOrder: [] },
+  };
   try {
     const [folders, settings, imgs] = await Promise.all([
       fetchFolders(),
@@ -10,19 +16,16 @@ export async function fetchFirebaseData() {
       fetchImgs(),
     ]);
 
+    data = { folders, settings, imgs };
     return {
-      data: {
-        folders,
-        settings,
-        imgs,
-      },
+      data,
     };
   } catch (error) {
-    return { data: { error } };
+    return { data };
   }
 }
 
-async function fetchFolders() {
+async function fetchFolders(): Promise<FolderI[]> {
   const foldersCollectionRef = collection(db, "folders");
 
   try {
@@ -30,7 +33,7 @@ async function fetchFolders() {
     const folders = query.docs.map((d) => ({
       id: d.id,
       ...d.data(),
-    }));
+    })) as FolderI[];
 
     return folders;
   } catch (error) {
@@ -38,11 +41,11 @@ async function fetchFolders() {
   }
 }
 
-async function fetchSettings() {
+async function fetchSettings(): Promise<SettingsI> {
   const settingsCollectionRef = collection(db, "settings");
   try {
     const query = await getDocs(settingsCollectionRef);
-    const settings = query.docs.map((d) => ({ ...d.data() }))[0];
+    const settings = query.docs.map((d) => ({ ...d.data() }))[0] as SettingsI;
 
     return settings;
   } catch (error) {
@@ -50,7 +53,7 @@ async function fetchSettings() {
   }
 }
 
-async function fetchImgs() {
+async function fetchImgs(): Promise<ImgI[]> {
   function extractToken(url: string): string {
     const tokenMatch = url.match(/[?&]token=([^&]+)/);
     return tokenMatch ? tokenMatch[1] : "";

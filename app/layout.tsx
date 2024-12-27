@@ -1,5 +1,6 @@
 import { fetchFirebaseData } from "@/lib/api";
 import "./globals.css";
+import { AppContextProvider } from "@/lib/AppContext";
 
 export default async function RootLayout({
   children,
@@ -10,7 +11,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AppContextProvider initialData={data}>{children}</AppContextProvider>
+      </body>
     </html>
   );
 }
