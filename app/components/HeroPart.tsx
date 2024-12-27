@@ -4,6 +4,7 @@ import { useAppContext } from "@/lib/AppContext";
 import React from "react";
 import HeroPartMenu from "./HeroPartMenu";
 import HeroPhoto from "./HeroPhoto";
+import "../styles/heropart.css";
 
 export default function HeroPart() {
   const { getFolderImages } = useAppContext();
@@ -23,9 +24,9 @@ export default function HeroPart() {
           tekst rzykładowy tekstprzykładowy tekst rzykładowy tekstprzykładowy
           tekst
         </p>
-        <HeroPartMenu onSelect={(i) => setSelected(i)} photos={heroPhotos} />
-        <HeroPhoto src={heroPhotos[selected].url} />
       </div>
+      <HeroPartMenu onSelect={(i) => setSelected(i)} photos={heroPhotos} />
+      <HeroPhoto src={heroPhotos[selected].url} />
     </div>
   );
 }
