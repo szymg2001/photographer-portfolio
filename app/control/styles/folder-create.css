@@ -1,0 +1,30 @@
+.create-folder {
+  width: 250px;
+  padding: 5px 0px 15px;
+}
+
+.control-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.control-input:has(.control-input__disabled) {
+  cursor: not-allowed;
+}
+
+.control-input__checkbox-input {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control-input__disabled {
+  color: var(--gray);
+}
+
+.create-folder__buttons {
+  margin-top: 25px;
+}

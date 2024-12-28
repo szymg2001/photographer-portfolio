@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ControlSection from "./components/ControlSection";
 import "./styles/control.css";
+import ControlFolderCreate from "./components/ControlFolderCreate";
 
 export default function ControlPage() {
   return (
@@ -11,7 +12,9 @@ export default function ControlPage() {
           Wróć do strony głównej
         </Link>
       </div>
-      <ControlSection title="Stwórz nowy folder">asd</ControlSection>
+      <ControlSection title="Stwórz nowy folder">
+        <ControlFolderCreate />
+      </ControlSection>
     </div>
   );
 }
