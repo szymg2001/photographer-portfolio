@@ -5,7 +5,8 @@ export interface FolderI {
   description: string;
   createdAt: string;
   images: string[];
-  displayed: boolean;
+  /* displayed: boolean; */
+  public: boolean;
   imgLimit?: number;
   showInPortfolio: boolean;
 }
@@ -28,4 +29,5 @@ export interface AppContextPropI {
 export interface ContextValuesI {
   folders: FolderI[];
   getFolderImages: (folderName: string) => ImgI[];
+  createFolder: (data: FolderI) => void;
 }

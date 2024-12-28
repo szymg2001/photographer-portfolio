@@ -8,6 +8,8 @@ import {
   ImgI,
   SettingsI,
 } from "./firebaseTypes";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "./firebase";
 
 const AppContext = React.createContext({} as ContextValuesI);
 
@@ -47,6 +49,14 @@ export const AppContextProvider = ({
     return imgArray;
   }
 
-  const value: ContextValuesI = { folders, getFolderImages };
+  async function createFolder(data: FolderI) {
+    //Add folder to DB
+    const foldersRef = collection(db, "folders");
+    await addDoc(foldersRef, data);
+
+    setFolders((prev) => [...prev, data]);
+  }
+
+  const value: ContextValuesI = { folders, getFolderImages, createFolder };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
