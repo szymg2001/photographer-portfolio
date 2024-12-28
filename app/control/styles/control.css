@@ -1,5 +1,5 @@
 .control {
-  --control--active-color: palevioletred;
+  --control--active-color: #d87093;
   --control--heading-size: 24px;
 
   --control--section-title-size: 18px;
@@ -59,8 +59,15 @@
   padding: 5px;
 
   display: grid;
-  grid-template-rows: max-content 0fr;
+  grid-template-rows: max-content max-content 0fr;
   transition: grid-template-rows 0.35s;
+}
+
+.control-section__note {
+  margin-left: 50px;
+  font-size: 14px;
+  color: var(--gray);
+  font-style: italic;
 }
 
 .control-section__content {
@@ -69,15 +76,26 @@
 }
 
 .--sectionExpanded {
-  grid-template-rows: max-content 1fr;
+  grid-template-rows: max-content max-content 1fr;
 }
 
 .control-section__head {
   display: flex;
   gap: 20px;
+  align-items: center;
+  cursor: pointer;
 }
 
 .control-section__title {
   font-size: var(--control--section-title-size);
   font-weight: var(--font-bold);
+}
+
+.control-section__expand-toggle {
+  height: 30px;
+  width: 30px;
+  transition: 0.24s;
+}
+.--rotateToggle {
+  transform: rotate(180deg);
 }
