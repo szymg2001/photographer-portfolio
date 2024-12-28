@@ -32,6 +32,7 @@ export default function ControlFolderCreate() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     createFolder(newFolderData);
+    setNewFolderData(initialFolderData);
   };
 
   return (

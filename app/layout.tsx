@@ -9,7 +9,6 @@ export default async function RootLayout({
 }>) {
   const { data } = await fetchFirebaseData();
 
-  console.log("GET DATA", data);
   return (
     <html lang="en">
       <body>

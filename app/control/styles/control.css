@@ -99,3 +99,36 @@
 .--rotateToggle {
   transform: rotate(180deg);
 }
+
+/*CONTROL - folder list element*/
+.control-folder {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  padding-left: 15px;
+}
+
+.control-folder__head {
+  display: flex;
+  gap: 15px;
+}
+.control-folder__name {
+  font-weight: var(--font-bold);
+  letter-spacing: 1px;
+}
+
+.control-folder__description {
+  color: var(--gray);
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.control-folder__info {
+  font-size: 14px;
+}
+
+.control-folder__info__mark {
+  font-size: 16px;
+  font-weight: var(--font-bold);
+}
