@@ -1,0 +1,61 @@
+.control {
+  --control--active-color: palevioletred;
+  --control--heading-size: 24px;
+
+  --control--section-title-size: 18px;
+
+  width: 95vw;
+  height: fit-content;
+  margin: 10px auto;
+  box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 10px;
+}
+
+.control__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0px 5px 10px;
+}
+
+.control__heading {
+  font-size: var(--control--heading-size);
+}
+
+.control__link {
+  all: unset;
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--control--active-color);
+}
+
+.control-section {
+  padding: 5px;
+
+  display: grid;
+  grid-template-rows: max-content 0fr;
+  transition: grid-template-rows 0.35s;
+}
+
+.control-section__content {
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.--sectionExpanded {
+  grid-template-rows: max-content 1fr;
+}
+
+.control-section__head {
+  display: flex;
+  gap: 20px;
+}
+
+.control-section__title {
+  font-size: var(--control--section-title-size);
+  font-weight: var(--font-bold);
+}
