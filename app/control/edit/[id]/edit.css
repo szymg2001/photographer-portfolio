@@ -1,0 +1,90 @@
+.edit__head {
+  margin-bottom: 15px;
+}
+
+.edit__heading {
+  font-weight: var(--font-bold);
+}
+
+.edit__folder-name {
+  color: var(--control--active-color);
+}
+
+.edit__photos__wrapper {
+  display: grid;
+  grid-template-rows: max-content max-content 0fr;
+  transition: grid-template-rows 0.35s;
+}
+
+.--editingPhotoList {
+  grid-template-rows: max-content max-content 1fr;
+}
+
+.edit__photos-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  margin-bottom: 20px;
+}
+
+.edit__image {
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.32);
+  border-radius: 2px;
+}
+
+.edit__photos__menu {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.edit__photos-add {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.edit__photos-add__wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.edit__photos-add__remove-hover,
+.edit__photos-add__add-hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-bold);
+  font-size: 20px;
+  letter-spacing: 1px;
+  background-color: rgba(0, 0, 0, 0.75);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.edit__photos-add__remove-hover:hover,
+.edit__photos-add__add-hover:hover {
+  opacity: 1;
+}
+
+.edit__photos-add__remove-hover > img,
+.edit__photos-add__add-hover > img {
+  width: 60px;
+  height: 60px;
+}
+
+.edit__photos-add__remove-hover {
+  color: #ff6f6f;
+}
+
+.edit__photos-add__add-hover {
+  color: #fff46c;
+}

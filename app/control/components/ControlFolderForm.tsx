@@ -37,11 +37,13 @@ export default function ControlFolderForm({
         onChange={(v) => handleChange("name", v)}
         label="Nazwa folderu"
         required={true}
+        defaultValue={folderData.name}
       />
       <ControlInput
         id="create-folder__description"
         onChange={(v) => handleChange("description", v)}
         label="Opis"
+        defaultValue={folderData.description}
       />
       <ControlInput
         id="create-folder__date"
@@ -54,6 +56,7 @@ export default function ControlFolderForm({
         onChange={(v) => handleChange("public", v)}
         label="Folder publiczny"
         type="checkbox"
+        defaultChecked={folderData.public}
       />
       <ControlInput
         id="create-folder__portfolio"
@@ -61,6 +64,7 @@ export default function ControlFolderForm({
         label="Wyodrębnij w portfolio"
         type="checkbox"
         disabled={!folderData.public}
+        defaultChecked={folderData.showInPortfolio}
       />
       <div className="create-folder__buttons">
         <button className="control__button" type="submit">

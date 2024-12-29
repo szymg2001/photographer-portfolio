@@ -7,8 +7,11 @@ import HeroPhoto from "./HeroPhoto";
 import "../styles/heropart.css";
 
 export default function HeroPart() {
-  const { getFolderImages } = useAppContext();
-  const heroPhotos = React.useMemo(() => getFolderImages("heroPhotos"), []);
+  const { getFolderImagesByName } = useAppContext();
+  const heroPhotos = React.useMemo(
+    () => getFolderImagesByName("heroPhotos"),
+    []
+  );
   const [selected, setSelected] = React.useState(0);
 
   return (

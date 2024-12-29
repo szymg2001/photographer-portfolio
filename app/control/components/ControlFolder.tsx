@@ -1,4 +1,5 @@
 import { FolderI } from "@/lib/firebaseTypes";
+import Link from "next/link";
 
 interface ControlFolderI {
   data: FolderI;
@@ -9,7 +10,9 @@ export default function ControlFolder({ data }: ControlFolderI) {
     <div className="control-folder">
       <div className="control-folder__head">
         <p className="control-folder__name">{data.name}</p>
-        <span className="control__link">Edytuj</span>
+        <Link className="control__link" href={`control/edit/${data.id}`}>
+          Edytuj
+        </Link>
         <span className="control__link">Usuń</span>
       </div>
       <p className="control-folder__description">{data.description}</p>

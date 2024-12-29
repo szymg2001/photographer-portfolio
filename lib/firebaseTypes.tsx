@@ -1,3 +1,5 @@
+import { v4 } from "uuid";
+
 export interface FolderI {
   id: string;
   name: string;
@@ -28,6 +30,21 @@ export interface AppContextPropI {
 
 export interface ContextValuesI {
   folders: FolderI[];
-  getFolderImages: (folderName: string) => ImgI[];
+  imgs: ImgI[];
+  getFolderImagesByName: (folderName: string) => ImgI[];
+  getFolderImagesById: (folderId: string) => ImgI[];
   createFolder: (data: FolderI) => void;
+  getImages: (idArray: string[]) => ImgI[];
+  editFolder: (data: FolderI) => void;
 }
+
+export const initialFolderData: FolderI = {
+  name: "",
+  images: [],
+  isDefault: false,
+  createdAt: new Date().toISOString(),
+  showInPortfolio: false,
+  description: "",
+  id: v4(),
+  public: false,
+};

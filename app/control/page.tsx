@@ -1,24 +1,21 @@
 "use client";
 
-import Link from "next/link";
 import ControlSection from "./components/ControlSection";
 import "./styles/control.css";
-import ControlFolderCreate from "./components/ControlFolderCreate";
+import ControlFolderForm from "./components/ControlFolderForm";
 import { useAppContext } from "@/lib/AppContext";
 import ControlFolder from "./components/ControlFolder";
+import { initialFolderData } from "@/lib/firebaseTypes";
 
 export default function ControlPage() {
-  const { folders } = useAppContext();
+  const { folders, createFolder } = useAppContext();
   return (
-    <div className="control">
-      <div className="control__head">
-        <h1 className="control__heading">Panel Zarządzania</h1>
-        <Link className="control__link" href="/">
-          Wróć do strony głównej
-        </Link>
-      </div>
+    <>
       <ControlSection title="Stwórz nowy folder">
-        <ControlFolderCreate />
+        <ControlFolderForm
+          data={initialFolderData}
+          onSubmit={(data) => createFolder(data)}
+        />
       </ControlSection>
       <ControlSection
         note="Foldery wymagane do poprawnego działania strony."
@@ -37,6 +34,6 @@ export default function ControlPage() {
             <ControlFolder data={f} key={f.id} />
           ))}
       </ControlSection>
-    </div>
+    </>
   );
 }

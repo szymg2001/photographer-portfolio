@@ -8,7 +8,7 @@ import {
   ImgI,
   SettingsI,
 } from "./firebaseTypes";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
 const AppContext = React.createContext({} as ContextValuesI);
@@ -30,8 +30,15 @@ export const AppContextProvider = ({
   const [imgs, setImgs] = React.useState(initialData.imgs);
 
   //Methods
-  function getFolderImages(folderName: string): ImgI[] {
+  function getFolderImagesByName(folderName: string): ImgI[] {
     let folder = folders.find((f) => f.name === folderName);
+    if (!folder) return [];
+
+    return getImages(folder.images);
+  }
+
+  function getFolderImagesById(folderId: string): ImgI[] {
+    let folder = folders.find((f) => f.id === folderId);
     if (!folder) return [];
 
     return getImages(folder.images);
@@ -57,6 +64,24 @@ export const AppContextProvider = ({
     setFolders((prev) => [...prev, data]);
   }
 
-  const value: ContextValuesI = { folders, getFolderImages, createFolder };
+  async function editFolder(data: FolderI) {
+    let folderRef = doc(db, "folders", data.id);
+    await setDoc(folderRef, data);
+
+    let folderIndex = folders.findIndex((f) => f.id === data.id);
+    setFolders((prev) => [
+      ...prev.map((f, index) => (index === folderIndex ? data : f)),
+    ]);
+  }
+
+  const value: ContextValuesI = {
+    folders,
+    imgs,
+    getFolderImagesByName,
+    getFolderImagesById,
+    createFolder,
+    getImages,
+    editFolder,
+  };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

@@ -7,6 +7,8 @@ interface ControlInputI {
   onChange: (value: string | boolean | number) => void;
   disabled?: boolean;
   required?: boolean;
+  defaultValue?: string;
+  defaultChecked?: boolean;
 }
 
 export default function ControlInput({
@@ -16,6 +18,8 @@ export default function ControlInput({
   disabled = false,
   onChange,
   required = false,
+  defaultValue,
+  defaultChecked,
 }: ControlInputI) {
   return (
     <div
@@ -39,6 +43,8 @@ export default function ControlInput({
             type === "checkbox" ? event.target.checked : event.target.value
           )
         }
+        defaultValue={defaultValue}
+        defaultChecked={defaultChecked}
         type={type}
         className="control-input__input-element"
         disabled={disabled}

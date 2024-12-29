@@ -33,6 +33,10 @@
   color: var(--control--active-color);
 }
 
+.control__image {
+  max-height: 200px;
+}
+
 .control__button {
   all: unset;
   padding: 3px 5px;
