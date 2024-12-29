@@ -2,13 +2,13 @@
 
 import React from "react";
 import ControlInput from "./ControlInput";
-import { FolderI, initialFolderData } from "@/lib/firebaseTypes";
+import { FolderFormI, FolderI, initialFolderData } from "@/lib/firebaseTypes";
 import "../styles/folder-create.css";
 import { useAppContext } from "@/lib/AppContext";
 
 interface ControlFolderFormI {
-  data: FolderI;
-  onSubmit: (data: FolderI) => void;
+  data: FolderFormI;
+  onSubmit: (data: FolderFormI) => void;
 }
 
 export default function ControlFolderForm({

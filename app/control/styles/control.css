@@ -136,3 +136,30 @@
   font-size: 16px;
   font-weight: var(--font-bold);
 }
+
+/*CONTROL - portfolio order*/
+
+.control__portfolio-order__element {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.control__portfolio-order__change-order {
+  width: 25px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 5px;
+  filter: brightness(1.25);
+  transition: 0.34s;
+}
+
+.control__portfolio-order__change-order:nth-child(2) {
+  transform: rotate(180deg);
+}
+
+.control__portfolio-order__change-order:hover {
+  background-color: rgba(216, 112, 147, 0.2);
+  cursor: pointer;
+}

@@ -4,6 +4,7 @@ import React from "react";
 import {
   AppContextPropI,
   ContextValuesI,
+  FolderFormI,
   FolderI,
   ImgI,
   SettingsI,
@@ -56,12 +57,12 @@ export const AppContextProvider = ({
     return imgArray;
   }
 
-  async function createFolder(data: FolderI) {
+  async function createFolder(data: FolderFormI) {
     //Add folder to DB
     const foldersRef = collection(db, "folders");
-    await addDoc(foldersRef, data);
+    const docRef = await addDoc(foldersRef, data);
 
-    setFolders((prev) => [...prev, data]);
+    setFolders((prev) => [...prev, { ...data, id: docRef.id }]);
   }
 
   async function editFolder(data: FolderI) {
@@ -74,14 +75,31 @@ export const AppContextProvider = ({
     ]);
   }
 
+  async function changePortfolioOrder(direction: -1 | 1, index: number) {
+    if (index === 0 && direction === -1) return;
+    if (index === settings.portfolioOrder.length - 1 && direction === 1) return;
+
+    let newOrder = [...settings.portfolioOrder];
+    let temp = settings.portfolioOrder[index];
+    newOrder[index] = newOrder[index + direction];
+    newOrder[index + direction] = temp;
+
+    let settingsRef = doc(db, "settings", "main");
+    await updateDoc(settingsRef, { portfolioOrder: newOrder });
+
+    setSettings((prev) => ({ ...prev, portfolioOrder: [...newOrder] }));
+  }
+
   const value: ContextValuesI = {
     folders,
     imgs,
+    settings,
     getFolderImagesByName,
     getFolderImagesById,
     createFolder,
     getImages,
     editFolder,
+    changePortfolioOrder,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

@@ -31,20 +31,22 @@ export interface AppContextPropI {
 export interface ContextValuesI {
   folders: FolderI[];
   imgs: ImgI[];
+  settings: SettingsI;
   getFolderImagesByName: (folderName: string) => ImgI[];
   getFolderImagesById: (folderId: string) => ImgI[];
-  createFolder: (data: FolderI) => void;
+  createFolder: (data: FolderFormI) => void;
   getImages: (idArray: string[]) => ImgI[];
   editFolder: (data: FolderI) => void;
+  changePortfolioOrder: (direction: -1 | 1, index: number) => void;
 }
 
-export const initialFolderData: FolderI = {
+export type FolderFormI = Omit<FolderI, "id">;
+export const initialFolderData: FolderFormI = {
   name: "",
   images: [],
   isDefault: false,
   createdAt: new Date().toISOString(),
   showInPortfolio: false,
   description: "",
-  id: v4(),
   public: false,
 };
