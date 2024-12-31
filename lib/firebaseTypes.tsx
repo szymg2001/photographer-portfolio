@@ -11,6 +11,7 @@ export interface FolderI {
   public: boolean;
   imgLimit?: number;
   showInPortfolio: boolean;
+  coverId: string | null;
 }
 
 export interface ImgI {
@@ -32,6 +33,7 @@ export interface ContextValuesI {
   folders: FolderI[];
   imgs: ImgI[];
   settings: SettingsI;
+
   getFolderImagesByName: (folderName: string) => ImgI[];
   getFolderImagesById: (folderId: string) => ImgI[];
   createFolder: (data: FolderFormI) => void;
@@ -49,4 +51,5 @@ export const initialFolderData: FolderFormI = {
   showInPortfolio: false,
   description: "",
   public: false,
+  coverId: null,
 };

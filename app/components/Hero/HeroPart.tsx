@@ -2,9 +2,9 @@
 
 import { useAppContext } from "@/lib/AppContext";
 import React from "react";
+import "../../styles/heropart.css";
 import HeroPartMenu from "./HeroPartMenu";
 import HeroPhoto from "./HeroPhoto";
-import "../styles/heropart.css";
 
 export default function HeroPart() {
   const { getFolderImagesByName } = useAppContext();

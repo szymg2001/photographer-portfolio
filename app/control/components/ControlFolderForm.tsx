@@ -4,7 +4,6 @@ import React from "react";
 import ControlInput from "./ControlInput";
 import { FolderFormI, FolderI, initialFolderData } from "@/lib/firebaseTypes";
 import "../styles/folder-create.css";
-import { useAppContext } from "@/lib/AppContext";
 
 interface ControlFolderFormI {
   data: FolderFormI;
