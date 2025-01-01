@@ -30,18 +30,7 @@
 }
 
 .recent__nav {
-  display: flex;
   width: var(--nav-gap);
-  justify-content: space-between;
-}
-
-.recent__nav-button {
-  height: 35px;
-  transition: 0.25s;
-}
-.recent__nav-button:hover {
-  opacity: 0.7;
-  cursor: pointer;
 }
 
 .recent__icon {
