@@ -1,5 +1,6 @@
 import React from "react";
 import { OffertBox } from "./OffertBox";
+import "../../styles/offertpart.css";
 
 export default function OffertPart() {
   return (

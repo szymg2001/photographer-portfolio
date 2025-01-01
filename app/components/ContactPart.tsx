@@ -1,4 +1,5 @@
 import CornerBox from "./CornerBox";
+import "../styles/contactpart.css";
 
 export default function ContactPart() {
   return (
