@@ -4,9 +4,9 @@
   --camera-icon-size: 40px;
   --nav-gap: 25%;
 
-  --album-cover-size: 350px;
+  /* --album-cover-size: 350px;
   --album-height: 555px;
-  --album-title-size: 24px;
+  --album-title-size: 24px; */
 
   padding: 80px var(--padding-x);
   background-color: var(--bg-dark);
@@ -31,6 +31,7 @@
 
 .recent__nav {
   width: var(--nav-gap);
+  color: #fff;
 }
 
 .recent__icon {
@@ -43,101 +44,13 @@
   margin-top: 50px;
 }
 
-/*ALBUM*/
-.recent-folder {
-  min-height: var(--album-height);
-  width: var(--album-cover-size);
-}
-
-.recent-folder__content {
-  display: grid;
-  grid-template-areas:
-    "top top"
-    "cover cover"
-    "title length"
-    "description description";
-}
-
-.recent-folder__top {
-  grid-area: top;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.recent-folder__top-line {
-  height: 1px;
-  flex-grow: 1;
-  background-color: #fff;
-}
-
-.recent-folder__cover {
-  grid-area: cover;
-  width: var(--album-cover-size);
-  height: var(--album-cover-size);
-  object-fit: cover;
-  margin-bottom: 30px;
-}
-
-.recent-folder__title {
-  font-size: var(--album-title-size);
-  grid-area: title;
-}
-
-.recent-folder__length {
-  grid-area: length;
-  align-self: center;
-  text-align: right;
-}
-
-.recent-folder__description {
-  margin-top: 15px;
-  color: var(--gray);
-  grid-area: description;
-}
-
-@media screen and (max-width: 1350px) {
-  .recent {
-    --album-cover-size: 275px;
-    --album-height: 480px;
-    --album-title-size: 21px;
-  }
-}
-
 @media screen and (max-width: 1110px) {
   .recent {
-    --album-cover-size: 220px;
-    --album-height: var(--album-cover-size);
     --nav-gap: 40%;
-  }
-  .recent-folder {
-    width: 100%;
-  }
-  .recent-folder > .corner-box__container > .corner-box__single-corner {
-    display: none;
-  }
-
-  .recent-folder__content {
-    grid-template-areas:
-      "cover top top"
-      "cover title length"
-      "cover description description";
-    grid-template-rows: 40px 50px auto;
-    grid-template-columns: max-content 1fr 1fr;
-    column-gap: 20px;
   }
 
   .recent__folders {
     flex-direction: column;
-  }
-
-  .recent-folder__top {
-    align-self: flex-start;
-  }
-
-  .recent-folder__length {
-    align-self: flex-start;
-    text-align: right;
   }
 }
 
@@ -146,9 +59,6 @@
     --subtitle-size: 27px;
     --title-size: 50px;
     --camera-icon-size: 35px;
-
-    --album-cover-size: 190px;
-    --album-title-size: 19px;
     padding: 60px 35px;
   }
 }

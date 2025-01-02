@@ -1,0 +1,102 @@
+.folder {
+  --album-cover-size: 350px;
+  --album-height: 555px;
+  --album-title-size: 24px;
+
+  min-height: var(--album-height);
+  width: var(--album-cover-size);
+}
+
+.folder__content {
+  display: grid;
+  grid-template-areas:
+    "top top"
+    "cover cover"
+    "title length"
+    "description description";
+}
+
+.folder__top {
+  grid-area: top;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.folder__top-line {
+  height: 1px;
+  flex-grow: 1;
+  background-color: #fff;
+}
+
+.folder__cover {
+  grid-area: cover;
+  width: var(--album-cover-size);
+  height: var(--album-cover-size);
+  object-fit: cover;
+  margin-bottom: 30px;
+}
+
+.folder__title {
+  font-size: var(--album-title-size);
+  grid-area: title;
+}
+
+.folder__length {
+  grid-area: length;
+  align-self: center;
+  text-align: right;
+}
+
+.folder__description {
+  margin-top: 15px;
+  color: var(--gray);
+  grid-area: description;
+}
+
+@media screen and (max-width: 1350px) {
+  .folder {
+    --album-cover-size: 275px;
+    --album-height: 480px;
+    --album-title-size: 21px;
+  }
+}
+
+@media screen and (max-width: 1110px) {
+  .folder {
+    --album-cover-size: 220px;
+    --album-height: var(--album-cover-size);
+  }
+  .folder {
+    width: 100%;
+  }
+  .folder > .corner-box__container > .corner-box__single-corner {
+    display: none;
+  }
+
+  .folder__content {
+    grid-template-areas:
+      "cover top top"
+      "cover title length"
+      "cover description description";
+    grid-template-rows: 40px 50px auto;
+    grid-template-columns: max-content 1fr 1fr;
+    column-gap: 20px;
+  }
+
+  .folder__top {
+    align-self: flex-start;
+  }
+
+  .folder__length {
+    align-self: flex-start;
+    text-align: right;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .folder {
+    --album-cover-size: 190px;
+    --album-title-size: 19px;
+  }
+}

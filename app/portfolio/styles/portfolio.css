@@ -1,0 +1,91 @@
+.portfolio {
+  --title-size: 48px;
+  --back-size: 24px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.portfolio__head {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 100px;
+  padding: 0px var(--padding-x);
+}
+
+.portfolio__title {
+  font-style: italic;
+  font-weight: var(--font-bold);
+  font-size: var(--title-size);
+  position: relative;
+  display: inline-block;
+  flex-grow: 1;
+}
+
+.portfolio__title::after {
+  content: "";
+  background-color: var(--gray);
+  position: absolute;
+  height: 1px;
+  width: 60%;
+  top: 120%;
+  left: 5%;
+}
+
+.portfolio__back {
+  font-size: var(--back-size);
+  text-decoration: none;
+  color: black;
+  font-style: italic;
+  position: relative;
+}
+
+.portfolio__back::after {
+  content: "";
+  width: 0;
+  height: 1px;
+  background-color: var(--gray);
+  position: absolute;
+  top: 110%;
+  left: -15%;
+  transition: 0.35s ease-in-out;
+}
+
+.portfolio__back:hover::after {
+  left: -5%;
+  width: 85%;
+}
+
+.portfolio__highlighted {
+  padding: 0px var(--padding-x);
+}
+
+.portfolio__albums-list {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+  gap: 40px 0px;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: calc(555px * 2 + 45px);
+  overflow-y: scroll;
+}
+
+.portfolio__albums {
+  background-color: var(--bg-dark);
+  padding: 50px var(--padding-x);
+  color: #fff;
+}
+
+.portfolio__albums-list > .folder {
+  justify-self: center;
+}
+.portfolio__albums-title {
+  font-size: 35px;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 1110px) {
+  .portfolio__albums-list {
+    height: calc(220px * 2 + 45px);
+  }
+}
