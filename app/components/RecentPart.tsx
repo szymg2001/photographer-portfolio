@@ -2,8 +2,10 @@
 import { useAppContext } from "@/lib/AppContext";
 import { FolderI } from "@/lib/firebaseTypes";
 import React from "react";
-import "../styles/recentpart.css";
+import "../styles/homepage/recentpart.css";
 import CornerBox from "./CornerBox";
+import ArrowNav from "./ArrowNav";
+import SingleFolder from "./SingleFolder";
 
 export default function RecentPart() {
   const { folders, getImages } = useAppContext();
@@ -24,34 +26,27 @@ export default function RecentPart() {
     [folders]
   );
 
-  const getCover = (folder: FolderI): string =>
-    folder.coverId
-      ? getImages([folder.coverId])[0].url
-      : getImages(folder.images)[0].url;
   return (
     <div className="recent">
       <p className="recent__subtitle">My Recent</p>
       <div className="recent__head">
         <h6 className="recent__title">Captures</h6>
-        <div className="recent__nav">
-          <img
-            src="/arrowLeft.svg"
-            alt="navigation left"
-            className="recent__nav-button"
-            onClick={() => handleChangeRange(-1)}
-          />
-          <img
-            src="/arrowRight.svg"
-            alt="navigation right"
-            className="recent__nav-button"
-            onClick={() => handleChangeRange(1)}
-          />
-        </div>
+        <ArrowNav
+          onClick={(d) => handleChangeRange(d)}
+          classname="recent__nav"
+        />
       </div>
       <img src="/camera.svg" className="recent__icon" />
       <div className="recent__folders">
         {recentFolders.slice(showRange[0], showRange[1]).map((rf) => (
-          <div key={rf.id} className="recent-folder">
+          <SingleFolder folder={rf} key={rf.id} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* <div key={rf.id} className="recent-folder">
             <CornerBox color="white" corners={["lb"]}>
               <div className="recent-folder__content">
                 <div className="recent-folder__top">
@@ -66,9 +61,4 @@ export default function RecentPart() {
                 <p className="recent-folder__description">{rf.description}</p>
               </div>
             </CornerBox>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+          </div> */
