@@ -1,102 +1,47 @@
 .folder {
-  --album-cover-size: 350px;
-  --album-height: 555px;
+  --album-cover-size: 325px;
   --album-title-size: 24px;
 
-  min-height: var(--album-height);
   width: var(--album-cover-size);
-}
-
-.folder__content {
-  display: grid;
-  grid-template-areas:
-    "top top"
-    "cover cover"
-    "title length"
-    "description description";
-}
-
-.folder__top {
-  grid-area: top;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.folder__top-line {
-  height: 1px;
-  flex-grow: 1;
-  background-color: #fff;
+  height: var(--album-cover-size);
+  position: relative;
+  box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.35);
+  border-radius: 5px 0px 5px 0px;
+  overflow: hidden;
 }
 
 .folder__cover {
-  grid-area: cover;
-  width: var(--album-cover-size);
-  height: var(--album-cover-size);
   object-fit: cover;
-  margin-bottom: 30px;
 }
 
-.folder__title {
-  font-size: var(--album-title-size);
-  grid-area: title;
+.folder__head {
+  position: absolute;
+  background-color: rgba(25, 25, 25, 0.9);
+  width: 100%;
+  display: flex;
+  bottom: 0px;
+  justify-content: space-between;
+  height: auto;
+  align-items: center;
 }
 
-.folder__length {
-  grid-area: length;
-  align-self: center;
-  text-align: right;
+.folder__name {
+  width: 100%;
+  padding: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: var(--font-bold);
+  font-size: 18px;
 }
 
-.folder__description {
-  margin-top: 15px;
-  color: var(--gray);
-  grid-area: description;
+.folder__view-button {
+  all: unset;
+  background-color: var(--accent);
+  align-self: stretch;
+  padding: 10px;
+  transition: 0.25s;
+  cursor: pointer;
 }
-
-@media screen and (max-width: 1350px) {
-  .folder {
-    --album-cover-size: 275px;
-    --album-height: 480px;
-    --album-title-size: 21px;
-  }
-}
-
-@media screen and (max-width: 1110px) {
-  .folder {
-    --album-cover-size: 220px;
-    --album-height: var(--album-cover-size);
-  }
-  .folder {
-    width: 100%;
-  }
-  .folder > .corner-box__container > .corner-box__single-corner {
-    display: none;
-  }
-
-  .folder__content {
-    grid-template-areas:
-      "cover top top"
-      "cover title length"
-      "cover description description";
-    grid-template-rows: 40px 50px auto;
-    grid-template-columns: max-content 1fr 1fr;
-    column-gap: 20px;
-  }
-
-  .folder__top {
-    align-self: flex-start;
-  }
-
-  .folder__length {
-    align-self: flex-start;
-    text-align: right;
-  }
-}
-
-@media screen and (max-width: 990px) {
-  .folder {
-    --album-cover-size: 190px;
-    --album-title-size: 19px;
-  }
+.folder__view-button:hover {
+  filter: brightness(1.2);
 }

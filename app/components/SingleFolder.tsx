@@ -13,24 +13,17 @@ export default function SingleFolder({ folder }: { folder: FolderI }) {
 
   return (
     <div key={folder.id} className="folder">
-      <CornerBox color="white" corners={["lb"]}>
-        <div className="folder__content">
-          <div className="folder__top">
-            <p className="folder__date">{folder.createdAt}</p>
-            <div className="folder__top-line" />
-          </div>
-          <Image
-            src={getCover(folder)}
-            className="folder__cover"
-            alt={`${folder.name} folder cover`}
-            width={450}
-            height={450}
-          />
-          <p className="folder__title">{folder.name}</p>
-          <p className="folder__length">{folder.images.length} photos</p>
-          <p className="folder__description">{folder.description}</p>
-        </div>
-      </CornerBox>
+      <Image
+        src={getCover(folder)}
+        className="folder__cover"
+        alt={`${folder.name} folder cover`}
+        width={325}
+        height={325}
+      />
+      <div className="folder__head">
+        <p className="folder__name">{folder.name}</p>
+        <button className="folder__view-button">Zobacz</button>
+      </div>
     </div>
   );
 }

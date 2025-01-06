@@ -24,7 +24,7 @@ export default function PortfolioSlider({ data }: { data: FolderI }) {
     setTranslates(
       photos.map((_, index) => {
         const even = index % 2 === 0;
-        const value = Math.floor(Math.random() * 20) + 10;
+        const value = Math.floor(Math.random() * 15) + 10;
         return even ? value * -1 : value;
       })
     );

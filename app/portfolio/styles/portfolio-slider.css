@@ -1,6 +1,6 @@
 .portfolio-slider {
   --portfolio-slider--name-size: 35px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   position: relative;
 }
 .portfolio-slider:nth-child(2n) > .portfolio-slider__head {
@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .portfolio-slider__head-name {
@@ -32,8 +32,8 @@
 .portfolio-slider__photos {
   display: flex;
   overflow-x: scroll;
-  padding: 80px 0px;
-  gap: 20px;
+  padding: 40px 0px;
+  gap: 10px;
 }
 
 @keyframes fadeInTop {
@@ -59,7 +59,7 @@
 .portfolio-slider__photo {
   opacity: 0;
   border-radius: 8px 0px 8px 0px;
-  height: 400px;
+  height: 350px;
   width: auto;
   box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.24);
   animation: fadeInTop forwards 1s;
