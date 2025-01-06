@@ -1,0 +1,26 @@
+.folder-page {
+  padding: 0px var(--padding-x);
+}
+
+.folder-page__name {
+  font-size: 32px;
+  color: var(--accent);
+  text-align: center;
+}
+
+.folder-page__head {
+  margin-bottom: 40px;
+}
+
+.folder-page__images {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.folder-page__image {
+  border-radius: 8px 0px 8px 0px;
+  box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.24);
+  height: 400px;
+  width: auto;
+}

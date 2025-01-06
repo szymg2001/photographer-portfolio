@@ -3,9 +3,11 @@ import CornerBox from "./CornerBox";
 import { useAppContext } from "@/lib/AppContext";
 import "../styles/folder.css";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function SingleFolder({ folder }: { folder: FolderI }) {
   const { getImages } = useAppContext();
+  const router = useRouter();
   const getCover = (folder: FolderI): string =>
     folder.coverId
       ? getImages([folder.coverId])[0].url
@@ -22,7 +24,14 @@ export default function SingleFolder({ folder }: { folder: FolderI }) {
       />
       <div className="folder__head">
         <p className="folder__name">{folder.name}</p>
-        <button className="folder__view-button">Zobacz</button>
+        <button
+          className="folder__view-button"
+          onClick={() => {
+            router.push(`./portfolio/${folder.id}`);
+          }}
+        >
+          Zobacz
+        </button>
       </div>
     </div>
   );

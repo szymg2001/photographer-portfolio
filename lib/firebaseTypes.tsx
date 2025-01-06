@@ -40,6 +40,7 @@ export interface ContextValuesI {
   getImages: (idArray: string[]) => ImgI[];
   editFolder: (data: FolderI) => void;
   changePortfolioOrder: (direction: -1 | 1, index: number) => void;
+  findFolder: (id: string) => FolderI | null;
 }
 
 export type FolderFormI = Omit<FolderI, "id">;

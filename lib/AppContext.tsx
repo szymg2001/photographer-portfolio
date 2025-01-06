@@ -38,6 +38,11 @@ export const AppContextProvider = ({
     return getImages(folder.images);
   }
 
+  function findFolder(id: string): FolderI | null {
+    let folder = folders.find((f) => f.id === id);
+    return folder ? folder : null;
+  }
+
   function getFolderImagesById(folderId: string): ImgI[] {
     let folder = folders.find((f) => f.id === folderId);
     if (!folder) return [];
@@ -100,6 +105,7 @@ export const AppContextProvider = ({
     getImages,
     editFolder,
     changePortfolioOrder,
+    findFolder,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

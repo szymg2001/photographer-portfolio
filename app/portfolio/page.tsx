@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import "./styles/portfolio.css";
 import { useAppContext } from "@/lib/AppContext";
 import React from "react";
 import PortfolioSlider from "./components/PortfolioSlider";
@@ -30,12 +28,6 @@ export default function Portfolio() {
 
   return (
     <div className="portfolio">
-      <div className="portfolio__head">
-        <h1 className="portfolio__title">Moje Portfolio</h1>
-        <Link className="portfolio__back" href="/">
-          Wróć do strony głównej
-        </Link>
-      </div>
       <div className="portfolio__highlighted">
         {highlighted.map((h) => (
           <PortfolioSlider data={h} key={h.id} />
