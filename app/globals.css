@@ -14,6 +14,8 @@
   --gray: #878787;
   --gray-dark: #343434;
 
+  --accent: #d87093;
+
   --font: "Arsenal", sans-serif;
   --font-regular: 400;
   --font-bold: 700;
@@ -35,6 +37,7 @@
 
 body {
   font-family: var(--font);
+  background-color: var(--bg-light);
 }
 
 .contact-info {

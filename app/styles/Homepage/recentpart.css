@@ -1,12 +1,246 @@
 .recent {
+  --recent--icon-size: 50px;
+  --recent--heading-size: 64px;
+  --recent--folder-name-size: 32px;
+  --recent--folder-row-size: 110px;
+
+  background-color: var(--bg-dark);
+  padding: 60px var(--padding-x);
+}
+
+.recent__head {
+  display: grid;
+  grid-template-columns: 50px 300px auto 50%;
+  grid-template-areas:
+    "icon heading heading heading"
+    "message message . nav";
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 55px;
+}
+
+.recent__icon {
+  grid-area: icon;
+  width: var(--recent--icon-size);
+}
+
+.recent__heading {
+  grid-area: heading;
+  font-size: var(--recent--heading-size);
+  color: #fff;
+}
+
+.recent__message {
+  grid-area: message;
+  color: var(--gray);
+  text-indent: 15px;
+  width: 100%;
+  font-style: italic;
+}
+
+.recent__head > .arrow__nav {
+  grid-area: nav;
+  color: #fff;
+}
+
+.recent__folder {
+  display: grid;
+  grid-template-areas:
+    "name img1 img2"
+    "img0 img1 img2"
+    "img0 img1 img2"
+    "img0 img1 description"
+    "img0 img1 more";
+  grid-template-rows: repeat(5, var(--recent--folder-row-size));
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+  border-top: 1px solid var(--gray);
+  border-bottom: 1px solid var(--gray);
+  gap: 0px 15px;
+  margin-bottom: 20px;
+}
+
+.recent__folder--reversed {
+  grid-template-areas:
+    "description img1 img0"
+    "more img1 img0"
+    "img2 img1 img0"
+    "img2 img1 img0"
+    "img2 img1 name";
+}
+
+.recent__folder__img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.34);
+}
+
+.recent__folder__name {
+  grid-area: name;
+  font-style: italic;
+  font-weight: var(--font-bold);
+  font-size: var(--recent--folder-name-size);
+
+  align-self: center;
+  color: #fff;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.recent__folder__name::after {
+  content: "";
+  position: absolute;
+  left: -5px;
+  bottom: 0px;
+  width: 40%;
+  background-color: var(--accent);
+  height: 2px;
+}
+
+.recent__folder__description {
+  grid-area: description;
+  color: var(--gray);
+  padding-top: 15px;
+}
+
+.recent__folder__see-more {
+  grid-area: more;
+  color: #fff;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 20px;
+}
+
+.recent__folder__see-more__text {
+  position: relative;
+  padding: 5px 0px;
+  font-size: 18px;
+  transition: 0.27s ease-in-out;
+}
+
+.recent__folder__see-more__text::after {
+  content: "";
+  height: 1px;
+  width: 60%;
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
+  background-color: var(--accent);
+  transition: 0.35s;
+}
+
+.recent__folder__see-more > img {
+  width: 45px;
+  transition: 0.4s ease-in-out;
+}
+
+.recent__folder__see-more:hover > .recent__folder__see-more__text {
+  transform: translate(5px, -5px);
+}
+
+.recent__folder__see-more:hover > .recent__folder__see-more__text::after {
+  left: 20px;
+  width: 95%;
+}
+
+.recent__folder__see-more:hover > img {
+  transform: translate(15px, -15px);
+}
+
+@media screen and (max-width: 1350px) {
+  .recent {
+    --recent--folder-row-size: 95px;
+    --recent--folder-name-size: 28px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .recent {
+    --recent--folder-name-size: 24px;
+  }
+
+  .recent__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .recent__icon {
+    gap: 0;
+  }
+
+  .recent__message {
+    text-indent: 0%;
+  }
+
+  .recent__head > .arrow__nav {
+    width: 50%;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .recent__folder,
+  .recent__folder--reversed {
+    grid-template-areas:
+      "name name"
+      "img0 img2"
+      "description description"
+      "img1 img1"
+      "more more";
+  }
+
+  .recent__folder {
+    grid-template-rows: 1fr 340px auto auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 10px;
+  }
+
+  .recent__folder__name {
+    text-align: center;
+    padding: 20px 0px 10px;
+    margin-bottom: 10px;
+  }
+
+  .recent__folder__name::after {
+    content: "";
+    position: absolute;
+    left: 20%;
+    bottom: 0px;
+    width: 40%;
+  }
+
+  .recent__folder__description {
+    padding-top: 0;
+  }
+
+  .recent__folder__see-more {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .recent {
+    --recent--heading-size: 34px;
+  }
+  .recent__folder {
+    grid-template-rows: 1fr 240px auto 500px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* .recent {
   --subtitle-size: 32px;
   --title-size: 60px;
   --camera-icon-size: 40px;
   --nav-gap: 25%;
 
-  /* --album-cover-size: 350px;
-  --album-height: 555px;
-  --album-title-size: 24px; */
 
   padding: 80px var(--padding-x);
   background-color: var(--bg-dark);
@@ -82,3 +316,4 @@
     display: none;
   }
 }
+ */
