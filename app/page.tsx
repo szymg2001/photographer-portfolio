@@ -1,9 +1,9 @@
-import AboutPart from "./components/AboutPart";
-import ContactPart from "./components/ContactPart";
-import HeroPart from "./components/Hero/HeroPart";
-import Navbar from "./components/Navbar";
-import OffertPart from "./components/Offert/OffertPart";
-import RecentPart from "./components/RecentPart";
+import AboutPart from "@/components/homepage/AboutPart";
+import ContactPart from "@/components/homepage/ContactPart";
+import HeroPart from "@/components/homepage/Hero/HeroPart";
+import Navbar from "@/components/homepage/Navbar";
+import OffertPart from "@/components/homepage/Offert/OffertPart";
+import RecentPart from "@/components/homepage/RecentPart";
 
 export default function Home() {
   return (

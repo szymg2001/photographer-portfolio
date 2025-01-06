@@ -3,7 +3,7 @@
 import { useAppContext } from "@/lib/AppContext";
 import Image from "next/image";
 import React, { use } from "react";
-import "./styles.css";
+import "@/styles/portfolio/folder-page.css";
 
 export default function FolderPage({
   params,

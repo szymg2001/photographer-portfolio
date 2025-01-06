@@ -2,7 +2,7 @@
 
 import { useAppContext } from "@/lib/AppContext";
 import React from "react";
-import "../styles/homepage/about.css";
+import "@/styles/homepage/about.css";
 
 export default function AboutPart() {
   const { getFolderImagesByName } = useAppContext();

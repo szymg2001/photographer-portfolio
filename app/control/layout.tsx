@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import "./styles/control.css";
+import "@/styles/control/control.css";
 
 export default function ControlLayout({
   children,

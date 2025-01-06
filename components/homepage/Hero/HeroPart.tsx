@@ -2,7 +2,7 @@
 
 import { useAppContext } from "@/lib/AppContext";
 import React from "react";
-import "../../styles/homepage/heropart.css";
+import "@/styles/homepage/heropart.css";
 import HeroPartMenu from "./HeroPartMenu";
 import HeroPhoto from "./HeroPhoto";
 

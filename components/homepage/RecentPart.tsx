@@ -1,11 +1,8 @@
 "use client";
 import { useAppContext } from "@/lib/AppContext";
-import { FolderI } from "@/lib/firebaseTypes";
 import React from "react";
-import "../styles/homepage/recentpart.css";
-import CornerBox from "./CornerBox";
-import ArrowNav from "./ArrowNav";
-import SingleFolder from "./SingleFolder";
+import ArrowNav from "../ArrowNav";
+import "@/styles/homepage/recentpart.css";
 
 export default function RecentPart() {
   const { folders, getImages } = useAppContext();

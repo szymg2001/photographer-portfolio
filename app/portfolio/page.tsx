@@ -2,9 +2,9 @@
 
 import { useAppContext } from "@/lib/AppContext";
 import React from "react";
-import PortfolioSlider from "./components/PortfolioSlider";
 import { FolderI } from "@/lib/firebaseTypes";
-import SingleFolder from "../components/SingleFolder";
+import PortfolioSlider from "@/components/portfolio/PortfolioSlider";
+import SingleFolder from "@/components/SingleFolder";
 
 export default function Portfolio() {
   const { folders } = useAppContext();

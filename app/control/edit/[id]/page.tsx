@@ -2,11 +2,10 @@
 
 import { useAppContext } from "@/lib/AppContext";
 import { FolderI, ImgI } from "@/lib/firebaseTypes";
-import Link from "next/link";
 import React, { use } from "react";
-import ControlFolderForm from "../../components/ControlFolderForm";
-import ControlSection from "../../components/ControlSection";
-import "./edit.css";
+import ControlFolderForm from "@/components/control/ControlFolderForm";
+import ControlSection from "@/components/control/ControlSection";
+import "@styles/control/edit.css";
 import { useRouter } from "next/navigation";
 
 interface ParamsI {

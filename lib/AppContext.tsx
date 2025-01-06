@@ -95,6 +95,15 @@ export const AppContextProvider = ({
     setSettings((prev) => ({ ...prev, portfolioOrder: [...newOrder] }));
   }
 
+  function getFolderCover(id: string) {
+    let folder = findFolder(id);
+    if (!folder) return "not found url";
+
+    return folder.coverId
+      ? getImages([folder.coverId])[0].url
+      : getImages(folder.images)[0].url;
+  }
+
   const value: ContextValuesI = {
     folders,
     imgs,
@@ -106,6 +115,7 @@ export const AppContextProvider = ({
     editFolder,
     changePortfolioOrder,
     findFolder,
+    getFolderCover,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

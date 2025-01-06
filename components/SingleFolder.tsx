@@ -1,22 +1,17 @@
 import { FolderI } from "@/lib/firebaseTypes";
-import CornerBox from "./CornerBox";
 import { useAppContext } from "@/lib/AppContext";
-import "../styles/folder.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import "@/styles/folder.css";
 
 export default function SingleFolder({ folder }: { folder: FolderI }) {
-  const { getImages } = useAppContext();
   const router = useRouter();
-  const getCover = (folder: FolderI): string =>
-    folder.coverId
-      ? getImages([folder.coverId])[0].url
-      : getImages(folder.images)[0].url;
+  const { getFolderCover } = useAppContext();
 
   return (
     <div key={folder.id} className="folder">
       <Image
-        src={getCover(folder)}
+        src={getFolderCover(folder.id)}
         className="folder__cover"
         alt={`${folder.name} folder cover`}
         width={325}

@@ -2,8 +2,8 @@
 
 import React from "react";
 import ControlInput from "./ControlInput";
-import { FolderFormI, FolderI, initialFolderData } from "@/lib/firebaseTypes";
-import "../styles/folder-create.css";
+import { FolderFormI, FolderI } from "@/lib/firebaseTypes";
+import "@/styles/control/folder-create.css";
 
 interface ControlFolderFormI {
   data: FolderFormI;

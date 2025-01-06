@@ -1,4 +1,4 @@
-import CornerBox from "../CornerBox";
+import CornerBox from "@/components/CornerBox";
 
 interface OffertBoxI {
   icon?: string;

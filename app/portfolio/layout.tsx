@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import "./styles/portfolio.css";
+import "@/styles/portfolio/portfolio.css";
 
 export default function PortfolioLayout({
   children,

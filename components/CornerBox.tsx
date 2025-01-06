@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/cornerbox.css";
+import "@/styles/cornerbox.css";
 
 interface CornerBoxI {
   children: React.ReactNode;

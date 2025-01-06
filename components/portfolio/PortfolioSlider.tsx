@@ -1,24 +1,17 @@
 "use client";
-import ArrowNav from "@/app/components/ArrowNav";
-import { FolderI } from "@/lib/firebaseTypes";
-import Link from "next/link";
-
-import "../styles/portfolio-slider.css";
 import React from "react";
-import { useAppContext } from "@/lib/AppContext";
+import Link from "next/link";
 import Image from "next/image";
+import { FolderI } from "@/lib/firebaseTypes";
+import { useAppContext } from "@/lib/AppContext";
+import ArrowNav from "../ArrowNav";
+import "@/styles/portfolio/portfolio-slider.css";
 
 export default function PortfolioSlider({ data }: { data: FolderI }) {
   const { getImages } = useAppContext();
   const photos = React.useMemo(() => getImages(data.images), [data.images]);
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [translates, setTranslates] = React.useState<number[]>([]);
-
-  const getRandomTranslate = (index: number) => {
-    let even = index % 2 === 0;
-    let value = Math.floor(Math.random() * 20) + 10;
-    return even ? value * -1 : value;
-  };
 
   React.useEffect(() => {
     setTranslates(
@@ -37,7 +30,7 @@ export default function PortfolioSlider({ data }: { data: FolderI }) {
           <p className="portfolio-slider__name">{data.name}</p>
           <Link href="/">See full</Link>
         </div>
-        <ArrowNav onClick={(d) => {}} classname="portfolio-slider__nav" />
+        <ArrowNav onClick={() => {}} classname="portfolio-slider__nav" />
       </div>
       <div className="portfolio-slider__photos">
         {photos.map((p, index) => (

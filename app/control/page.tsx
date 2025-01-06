@@ -1,11 +1,11 @@
 "use client";
 
-import ControlSection from "./components/ControlSection";
-import "./styles/control.css";
-import ControlFolderForm from "./components/ControlFolderForm";
+import ControlSection from "@/components/control/ControlSection";
+import "@/styles/control/control.css";
+import ControlFolderForm from "@/components/control/ControlFolderForm";
 import { useAppContext } from "@/lib/AppContext";
-import ControlFolder from "./components/ControlFolder";
-import { FolderI, initialFolderData } from "@/lib/firebaseTypes";
+import ControlFolder from "@/components/control/ControlFolder";
+import { initialFolderData } from "@/lib/firebaseTypes";
 import React from "react";
 
 export default function ControlPage() {

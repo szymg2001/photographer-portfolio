@@ -41,6 +41,7 @@ export interface ContextValuesI {
   editFolder: (data: FolderI) => void;
   changePortfolioOrder: (direction: -1 | 1, index: number) => void;
   findFolder: (id: string) => FolderI | null;
+  getFolderCover: (id: string) => string;
 }
 
 export type FolderFormI = Omit<FolderI, "id">;

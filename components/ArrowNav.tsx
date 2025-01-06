@@ -1,13 +1,11 @@
-import "../styles/arrownav.css";
+import "@/styles/arrownav.css";
 
 export default function ArrowNav({
   onClick,
   classname = "",
-  buttonClassname = "",
 }: {
   onClick: (direction: -1 | 1) => void;
   classname?: string;
-  buttonClassname?: string;
 }) {
   return (
     <div className={`arrow__nav ${classname}`}>

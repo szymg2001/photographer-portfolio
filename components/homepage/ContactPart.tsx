@@ -1,5 +1,5 @@
-import CornerBox from "./CornerBox";
-import "../styles/homepage/contactpart.css";
+import CornerBox from "../CornerBox";
+import "@/styles/homepage/contactpart.css";
 
 export default function ContactPart() {
   return (
