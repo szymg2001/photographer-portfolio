@@ -20,7 +20,7 @@
   --font-regular: 400;
   --font-bold: 700;
 
-  --padding-x: 100px;
+  --padding-x: 75px;
 }
 
 @media screen and (max-width: 770px) {
@@ -38,6 +38,7 @@
 body {
   font-family: var(--font);
   background-color: var(--bg-light);
+  overflow-x: hidden;
 }
 
 .contact-info {

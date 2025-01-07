@@ -31,7 +31,7 @@ export default function AboutPart() {
         ))}
       </div>
       <div className="about__text-container">
-        <h6 className="about__title">About Me</h6>
+        <h6 className="about__title">Kim Jestem</h6>
         <p className="about__description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
           suscipit corrupti autem ipsa dolorem eum fuga quas? Perferendis sunt

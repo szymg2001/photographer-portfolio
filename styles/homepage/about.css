@@ -3,8 +3,8 @@
   display: flex;
   justify-content: space-around;
   position: relative;
-  height: 500px;
-  margin-top: 100px;
+  height: 550px;
+  /* margin-top: 100px; */
   margin-bottom: 100px;
 }
 
@@ -14,41 +14,45 @@
 }
 
 .about__image {
-  --transform: translate(-50%, -50%);
+  /* --transform: translate(-50%, -50%); */
   position: absolute;
-  box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.24);
+  object-fit: cover;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.44);
+  /*   box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.24);
   opacity: 0;
   animation-timeline: view();
   animation-range-start: cover;
   animation-range-end: 300px;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
   /* height: 533.33px; */
 }
 
 /* Back */
 .about__image:nth-child(1) {
-  transform: var(--transform) rotate(-8deg);
-  left: 30%;
-  width: 225px;
-  top: 45%;
-  animation: slide-in-back linear;
+  transform: /* var(--transform) */ rotate(-8deg);
+  left: 15%;
+  width: 255px;
+  height: 360px;
+  bottom: 7%;
+  /*   animation: slide-in-back linear;
   animation-timeline: view();
   animation-range-start: cover;
   animation-range-end: 300px;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
 }
 
 /* Front */
 .about__image:nth-child(2) {
-  transform: var(--transform) rotate(10deg);
-  left: 60%;
-  top: 30%;
-  width: 300px;
-  animation: slide-in-front linear;
+  transform: /* var(--transform) */ rotate(10deg);
+  left: 45%;
+  bottom: 12%;
+  height: 450px;
+  width: 320px;
+  /*   animation: slide-in-front linear;
   animation-timeline: view();
   animation-range-start: cover;
   animation-range-end: 300px;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
 }
 
 @keyframes slide-in-front {
