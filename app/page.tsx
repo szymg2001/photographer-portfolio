@@ -1,4 +1,4 @@
-import AboutPart from "@/components/homepage/AboutPart";
+import AboutPart from "@/components/homepage/About/AboutPart";
 import ContactPart from "@/components/homepage/ContactPart";
 import HeroPart from "@/components/homepage/Hero/HeroPart";
 import Navbar from "@/components/homepage/Navbar";
