@@ -1,6 +1,7 @@
 "use client";
 
 import { ImgI } from "@/lib/firebaseTypes";
+import Image from "next/image";
 
 export default function HeroPartMenu({
   onSelect,
@@ -17,10 +18,12 @@ export default function HeroPartMenu({
           onClick={() => onSelect(index)}
           key={p.id}
         >
-          <img
+          <Image
             src={p.url}
             alt="Menu photo"
             className="hero-menu__element__photo"
+            width={150}
+            height={220}
           />
           <div className="hero-menu__element__hover">
             <img className="hero-menu__element__hover-svg" /* src={eye} */ />
