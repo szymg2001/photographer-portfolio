@@ -1,5 +1,5 @@
 import AboutPart from "@/components/homepage/About/AboutPart";
-import ContactPart from "@/components/homepage/ContactPart";
+import ContactPart from "@/components/homepage/Contact/ContactPart";
 import HeroPart from "@/components/homepage/Hero/HeroPart";
 import Navbar from "@/components/homepage/Navbar";
 import OffertPart from "@/components/homepage/Offert/OffertPart";
