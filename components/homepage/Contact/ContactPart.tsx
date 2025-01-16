@@ -7,7 +7,31 @@ import ContactInput from "./ContactInput";
 import { useInView } from "motion/react";
 
 export default function ContactPart() {
-  const handleSubmit = (e: React.FormEvent) => {};
+  const [formData, setFormData] = React.useState({
+    name: "",
+    message: "",
+    contact: "",
+  });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("Wiadomość została wysłana!");
+      } else {
+        const errorData = await response.json();
+        alert(`Błąd podczas wysyłania: ${errorData.error}`);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const formRef = React.useRef(null);
   const inView = useInView(formRef);
 
@@ -23,14 +47,16 @@ export default function ContactPart() {
               <ContactInput
                 label="Jak mam się do Ciebie zwracać?"
                 placeholder="Wprowadź Swoje imię"
-                onChange={(v) => {}}
+                onChange={(v) => setFormData((prev) => ({ ...prev, name: v }))}
                 id="contact-input__name"
                 number={1}
               />
               <ContactInput
                 label="Jak mogę się z Tobą skontaktować?"
                 placeholder="Wprowadź swój adres e-mail"
-                onChange={(v) => {}}
+                onChange={(v) =>
+                  setFormData((prev) => ({ ...prev, contact: v }))
+                }
                 id="contact-input__email"
                 number={2}
                 type="email"
@@ -42,7 +68,9 @@ export default function ContactPart() {
                 placeholder="Wprowadź swoją wiadomość"
                 id="contact-input__message"
                 number={3}
-                onChange={(v) => {}}
+                onChange={(v) =>
+                  setFormData((prev) => ({ ...prev, message: v }))
+                }
               />
             </div>
             <button type="submit" className="contact-part__submit">
