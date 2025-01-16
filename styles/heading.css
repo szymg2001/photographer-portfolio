@@ -1,0 +1,51 @@
+.head-component {
+  --title-size: 48px;
+  --back-size: 24px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 50px;
+  padding: 0px var(--padding-x);
+}
+
+.head-component__heading {
+  font-style: italic;
+  font-weight: var(--font-bold);
+  font-size: var(--title-size);
+  position: relative;
+  display: inline-block;
+  flex-grow: 1;
+}
+
+.head-component__heading::after {
+  content: "";
+  background-color: var(--gray);
+  position: absolute;
+  height: 1px;
+  width: 60%;
+  top: 120%;
+  left: 5%;
+}
+
+.head-component__link {
+  font-size: var(--back-size);
+  text-decoration: none;
+  color: var(--accent);
+  font-style: italic;
+  position: relative;
+}
+
+.head-component__link::after {
+  content: "";
+  width: 0;
+  height: 1px;
+  background-color: var(--gray);
+  position: absolute;
+  top: 110%;
+  left: -15%;
+  transition: 0.35s ease-in-out;
+}
+
+.head-component__link:hover::after {
+  left: -5%;
+  width: 85%;
+}

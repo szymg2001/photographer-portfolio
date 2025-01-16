@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import "@/styles/portfolio/portfolio.css";
+import Heading from "@/components/Heading";
 
 export default function PortfolioLayout({
   children,
@@ -9,12 +10,7 @@ export default function PortfolioLayout({
 }) {
   return (
     <div className="portfolio-layout">
-      <div className="portfolio__head">
-        <h1 className="portfolio__title">Moje Portfolio</h1>
-        <Link className="portfolio__back" href="/">
-          Wróć do strony głównej
-        </Link>
-      </div>
+      <Heading value="Moje Portfolio" />
       {children}
     </div>
   );
