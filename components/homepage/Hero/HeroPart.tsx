@@ -4,14 +4,13 @@ import { useAppContext } from "@/lib/AppContext";
 import React from "react";
 import "@/styles/homepage/heropart.css";
 import HeroPartMenu from "./HeroPartMenu";
-import HeroPhoto from "./HeroPhoto";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function HeroPart() {
-  const { getFolderImagesByName } = useAppContext();
+  const { getFolderImages } = useAppContext();
   const heroPhotos = React.useMemo(
-    () => getFolderImagesByName("heroPhotos"),
+    () => getFolderImages("heroPhotos", "name"),
     []
   );
   const [selected, setSelected] = React.useState(0);

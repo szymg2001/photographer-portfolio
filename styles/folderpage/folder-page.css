@@ -1,0 +1,35 @@
+.folder-page {
+  padding: 40px var(--padding-x);
+}
+
+.folder-page__details {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+.folder-page__photo-number > span {
+  color: var(--accent);
+}
+
+.folder-page__description {
+  color: var(--gray);
+  font-style: italic;
+  letter-spacing: 1px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.folder-page__photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 25px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.folder-page__photo {
+  height: auto;
+  width: auto;
+}

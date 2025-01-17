@@ -32,8 +32,8 @@ export const AppContextProvider = ({
 
   //Methods
   function getFolderImages(
-    searchBy: "id" | "name" = "id",
-    value: string
+    value: string,
+    searchBy: "id" | "name" = "id"
   ): ImgI[] {
     let folder = folders.find((f) => f[searchBy] === value);
     if (!folder) return [];

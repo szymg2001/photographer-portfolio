@@ -5,7 +5,7 @@ import { useInView, motion } from "motion/react";
 import React from "react";
 
 export default function AboutImages() {
-  const { getFolderImagesByName } = useAppContext();
+  const { getFolderImages } = useAppContext();
   const photos = React.useMemo(() => getPhotos(), []);
 
   const imgRef1 = React.useRef(null);
@@ -15,7 +15,7 @@ export default function AboutImages() {
   React.useEffect(() => {}, [isInView]);
 
   function getPhotos() {
-    let photosArray = getFolderImagesByName("aboutPhotos");
+    let photosArray = getFolderImages("aboutPhotos", "name");
     if (photosArray.length !== 2) {
       photosArray = Array(2)
         .fill(null)

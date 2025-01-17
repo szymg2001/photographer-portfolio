@@ -3,6 +3,7 @@ import { useAppContext } from "@/lib/AppContext";
 import React from "react";
 import ArrowNav from "../ArrowNav";
 import "@/styles/homepage/recentpart.css";
+import Link from "next/link";
 
 export default function RecentPart() {
   const { folders, getImages } = useAppContext();
@@ -52,12 +53,12 @@ export default function RecentPart() {
             />
           ))}
           <p className="recent__folder__description">{rf.description}</p>
-          <div className="recent__folder__see-more">
+          <Link className="recent__folder__see-more" href={`/folder/${rf.id}`}>
             <p className="recent__folder__see-more__text">
               Zobacz Cały Katalog
             </p>
             <img src="/arrowMore.svg" alt="see more" />
-          </div>
+          </Link>
         </div>
       ))}
     </div>

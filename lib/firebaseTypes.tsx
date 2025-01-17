@@ -32,7 +32,7 @@ export interface ContextValuesI {
   imgs: ImgI[];
   settings: SettingsI;
 
-  getFolderImages: (searchBy: "id" | "name", value: string) => ImgI[];
+  getFolderImages: (value: string, searchBy?: "id" | "name") => ImgI[];
   createFolder: (data: FolderFormI) => void;
   getImages: (idArray: string[]) => ImgI[];
   editFolder: (data: FolderI) => void;

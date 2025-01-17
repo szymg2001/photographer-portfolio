@@ -1,5 +1,3 @@
-"use client";
-
 import { ImgI } from "@/lib/firebaseTypes";
 import Image from "next/image";
 
