@@ -1,5 +1,3 @@
-import { v4 } from "uuid";
-
 export interface FolderI {
   id: string;
   name: string;
@@ -34,13 +32,12 @@ export interface ContextValuesI {
   imgs: ImgI[];
   settings: SettingsI;
 
-  getFolderImagesByName: (folderName: string) => ImgI[];
-  getFolderImagesById: (folderId: string) => ImgI[];
+  getFolderImages: (searchBy: "id" | "name", value: string) => ImgI[];
   createFolder: (data: FolderFormI) => void;
   getImages: (idArray: string[]) => ImgI[];
   editFolder: (data: FolderI) => void;
   changePortfolioOrder: (direction: -1 | 1, index: number) => void;
-  findFolder: (id: string) => FolderI | null;
+  getFolder: (id: string) => FolderI | null;
   getFolderCover: (id: string) => string;
 }
 

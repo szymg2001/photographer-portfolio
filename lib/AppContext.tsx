@@ -31,23 +31,19 @@ export const AppContextProvider = ({
   const [imgs, setImgs] = React.useState(initialData.imgs);
 
   //Methods
-  function getFolderImagesByName(folderName: string): ImgI[] {
-    let folder = folders.find((f) => f.name === folderName);
+  function getFolderImages(
+    searchBy: "id" | "name" = "id",
+    value: string
+  ): ImgI[] {
+    let folder = folders.find((f) => f[searchBy] === value);
     if (!folder) return [];
 
     return getImages(folder.images);
   }
 
-  function findFolder(id: string): FolderI | null {
+  function getFolder(id: string): FolderI | null {
     let folder = folders.find((f) => f.id === id);
     return folder ? folder : null;
-  }
-
-  function getFolderImagesById(folderId: string): ImgI[] {
-    let folder = folders.find((f) => f.id === folderId);
-    if (!folder) return [];
-
-    return getImages(folder.images);
   }
 
   function getImages(idArray: string[]): ImgI[] {
@@ -96,7 +92,7 @@ export const AppContextProvider = ({
   }
 
   function getFolderCover(id: string) {
-    let folder = findFolder(id);
+    let folder = getFolder(id);
     if (!folder) return "not found url";
 
     return folder.coverId
@@ -108,13 +104,12 @@ export const AppContextProvider = ({
     folders,
     imgs,
     settings,
-    getFolderImagesByName,
-    getFolderImagesById,
+    getFolder,
+    getFolderImages,
     createFolder,
     getImages,
     editFolder,
     changePortfolioOrder,
-    findFolder,
     getFolderCover,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
