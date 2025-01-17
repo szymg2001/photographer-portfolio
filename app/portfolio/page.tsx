@@ -7,7 +7,7 @@ import PortfolioSlider from "@/components/portfolio/PortfolioSlider";
 import SingleFolder from "@/components/SingleFolder";
 
 export default function Portfolio() {
-  const { folders } = useAppContext();
+  const { folders, settings } = useAppContext();
   const [publicFolders, setPublicFolders] = React.useState<FolderI[]>([]);
   const [highlighted, setHighlighted] = React.useState<FolderI[]>([]);
 
@@ -21,6 +21,12 @@ export default function Portfolio() {
       f.public && p.push(f);
       f.showInPortfolio && h.push(f);
     });
+
+    h.sort(
+      (a, b) =>
+        settings.portfolioOrder.indexOf(a.id) -
+        settings.portfolioOrder.indexOf(b.id)
+    );
 
     setHighlighted(h);
     setPublicFolders(p);
