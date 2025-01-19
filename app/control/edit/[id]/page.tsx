@@ -1,11 +1,11 @@
 "use client";
 
 import { useAppContext } from "@/lib/AppContext";
-import { FolderI, ImgI } from "@/lib/firebaseTypes";
+import { FolderFormI, FolderI, ImgI } from "@/lib/firebaseTypes";
 import React, { use } from "react";
 import ControlFolderForm from "@/components/control/ControlFolderForm";
 import ControlSection from "@/components/control/ControlSection";
-import "@styles/control/edit.css";
+import "@/styles/control/edit.css";
 import { useRouter } from "next/navigation";
 
 interface ParamsI {
@@ -24,10 +24,11 @@ export default function Edit({ params }: { params: Promise<ParamsI> }) {
   );
   const [editPhotos, setEditPhotos] = React.useState(false);
 
-  const handleSubmitEdit = async (d: FolderI) => {
+  const handleSubmitEdit = async (d: FolderFormI) => {
     if (!data) return;
-    d.images = data.images;
-    await editFolder(d);
+
+    let editedData: FolderI = { ...d, images: data.images, id: data.id };
+    await editFolder(editedData);
     router.push(`/control`);
   };
 
