@@ -7,12 +7,10 @@ import {
   FolderFormI,
   FolderI,
   ImgI,
-  SettingsI,
 } from "./firebaseTypes";
 import { addDoc, collection, doc, setDoc, updateDoc } from "firebase/firestore";
-import { auth, db } from "./firebase";
-import { onAuthStateChanged, User } from "firebase/auth";
-import { login, logout } from "./api";
+import { db } from "./firebase";
+import useAuth from "./useAuth";
 
 const AppContext = React.createContext({} as ContextValuesI);
 
@@ -28,34 +26,10 @@ export const AppContextProvider = ({
   initialData: AppContextPropI;
 }) => {
   //State
-  const [user, setUser] = React.useState<User | null>(null);
+  const { user, handleLogin, handleLogout } = useAuth();
   const [folders, setFolders] = React.useState(initialData.folders);
   const [settings, setSettings] = React.useState(initialData.settings);
   const [imgs, setImgs] = React.useState(initialData.imgs);
-
-  React.useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-    });
-    return () => unsubscribe();
-  }, []);
-
-  //Methods
-  async function handleLogin(email: string, password: string) {
-    try {
-      await login(email, password);
-    } catch (error) {
-      console.error("Login error: ", error);
-    }
-  }
-
-  async function handleLogout() {
-    try {
-      await logout();
-    } catch (error) {
-      console.error("Logout error: ", error);
-    }
-  }
 
   function getFolderImages(
     value: string,
