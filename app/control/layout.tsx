@@ -11,11 +11,16 @@ export default function ControlLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { user } = useAppContext();
+  const { user, handleLogout } = useAppContext();
   return (
     <div className="control">
       <Heading value="Panel Zarządzania" />
       {user ? children : <AuthForm />}
+      <div className="control__bottom-menu">
+        <span className="control__link" onClick={handleLogout}>
+          Wyloguj
+        </span>
+      </div>
     </div>
   );
 }

@@ -13,6 +13,14 @@
   padding: 10px;
 }
 
+.control__bottom-menu {
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  margin: 10px 20px 0px;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .control__head {
   display: flex;
   align-items: center;
