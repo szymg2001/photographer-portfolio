@@ -1,7 +1,8 @@
 import { collection, getDocs } from "firebase/firestore";
-import { db, storage } from "./firebase";
+import { auth, db, storage } from "./firebase";
 import { getDownloadURL, listAll, ref } from "firebase/storage";
 import { AppContextPropI, FolderI, ImgI, SettingsI } from "./firebaseTypes";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 export async function fetchFirebaseData() {
   let data: AppContextPropI = {
@@ -73,5 +74,27 @@ async function fetchImgs(): Promise<ImgI[]> {
     return imgsList;
   } catch (error) {
     throw error;
+  }
+}
+
+export async function login(email: string, password: string) {
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    return userCredential.user;
+  } catch (error) {
+    console.error("Błąd logowania: ", error);
+    throw error;
+  }
+}
+
+export async function logout() {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.error("Błąd wylogowania:", error);
   }
 }

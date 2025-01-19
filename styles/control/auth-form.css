@@ -1,0 +1,18 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 30px auto;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+}
+
+.auth-form__heading {
+  margin-bottom: 30px;
+  font-weight: var(--font-bold);
+}
+
+.auth-form__input {
+  margin-bottom: 10px;
+}

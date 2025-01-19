@@ -1,17 +1,21 @@
-import Link from "next/link";
+"use client";
+
 import React from "react";
 import "@/styles/control/control.css";
 import Heading from "@/components/Heading";
+import { useAppContext } from "@/lib/AppContext";
+import AuthForm from "@/components/control/AuthForm";
 
 export default function ControlLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { user } = useAppContext();
   return (
     <div className="control">
       <Heading value="Panel Zarządzania" />
-      {children}
+      {user ? children : <AuthForm />}
     </div>
   );
 }

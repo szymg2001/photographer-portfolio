@@ -1,3 +1,5 @@
+import { User } from "firebase/auth";
+
 export interface FolderI {
   id: string;
   name: string;
@@ -28,10 +30,13 @@ export interface AppContextPropI {
 }
 
 export interface ContextValuesI {
+  user: User | null;
   folders: FolderI[];
   imgs: ImgI[];
   settings: SettingsI;
 
+  handleLogin: (email: string, password: string) => Promise<void>;
+  handleLogout: () => Promise<void>;
   getFolderImages: (value: string, searchBy?: "id" | "name") => ImgI[];
   createFolder: (data: FolderFormI) => void;
   getImages: (idArray: string[]) => ImgI[];
