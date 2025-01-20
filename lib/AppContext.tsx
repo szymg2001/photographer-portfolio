@@ -26,7 +26,7 @@ export const AppContextProvider = ({
   initialData: AppContextPropI;
 }) => {
   //State
-  const { user, handleLogin, handleLogout } = useAuth();
+  const { user, handleLogin, handleLogout, authError } = useAuth();
   const [folders, setFolders] = React.useState(initialData.folders);
   const [settings, setSettings] = React.useState(initialData.settings);
   const [imgs, setImgs] = React.useState(initialData.imgs);
@@ -105,6 +105,7 @@ export const AppContextProvider = ({
     folders,
     imgs,
     settings,
+    authError,
     handleLogin,
     handleLogout,
     getFolder,

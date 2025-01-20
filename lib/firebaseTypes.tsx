@@ -34,6 +34,7 @@ export interface ContextValuesI {
   folders: FolderI[];
   imgs: ImgI[];
   settings: SettingsI;
+  authError: string;
 
   handleLogin: (email: string, password: string) => Promise<void>;
   handleLogout: () => Promise<void>;

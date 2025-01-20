@@ -85,7 +85,7 @@ export async function login(email: string, password: string) {
       password
     );
     return userCredential.user;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Błąd logowania: ", error);
     throw error;
   }

@@ -3,13 +3,14 @@ import "@/styles/control/auth-form.css";
 import React from "react";
 
 export default function AuthForm() {
-  const { handleLogin } = useAppContext();
+  const { handleLogin, authError } = useAppContext();
   const [formData, setFormData] = React.useState({ email: "", password: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    await handleLogin(formData.email, formData.password);
+    let res = await handleLogin(formData.email, formData.password);
+    console.log(res);
   };
 
   return (
@@ -39,6 +40,7 @@ export default function AuthForm() {
           setFormData((prev) => ({ ...prev, password: e.target.value }))
         }
       />
+      <p className="auth-form__error">{authError}</p>
       <button type="submit" className="auth-form__submit">
         Zaloguj
       </button>
