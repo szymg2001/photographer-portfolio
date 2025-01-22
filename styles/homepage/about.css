@@ -21,22 +21,24 @@
   min-width: 50%;
 }
 
-.about__image {
+.about__image-wrapper {
   position: absolute;
-  object-fit: cover;
+}
+
+.about__image {
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.44);
+  object-fit: cover;
+  width: 100%;
   aspect-ratio: 2/3;
 }
 
-/* Back */
-.about__image:nth-child(1) {
+.about__image-wrapper:nth-child(1) {
   left: var(--about--back-image-l);
   width: var(--about--back-image-w);
   bottom: var(--about--back-image-b);
 }
 
-/* Front */
-.about__image:nth-child(2) {
+.about__image-wrapper:nth-child(2) {
   left: var(--about--front-image-l);
   bottom: var(--about--front-image-b);
   width: var(--about--front-image-w);
