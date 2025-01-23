@@ -43,6 +43,15 @@
   color: #fff;
 }
 
+.recent__folders {
+  display: flex;
+  flex-direction: column;
+}
+
+.recent__folders--reversed {
+  flex-direction: column-reverse;
+}
+
 .recent__folder {
   display: grid;
   grid-template-areas:
