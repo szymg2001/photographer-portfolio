@@ -36,7 +36,7 @@ export default function ContactPart() {
   const inView = useInView(formRef);
 
   return (
-    <div className="contact-part">
+    <div className="contact-part" id="contact-section">
       <h6 className={`contact-part__title ${inView && "--contactInView"}`}>
         Opowiedz mi o <span>Swojej Wizji</span>.
       </h6>

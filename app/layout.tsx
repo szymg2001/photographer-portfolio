@@ -3,6 +3,12 @@ import { AppContextProvider } from "@/lib/AppContext";
 import "@/styles/globals.css";
 import Footer from "@/components/Footer";
 
+export const metadata = {
+  title: "Magdalena Pęcak - Fotografia",
+  description: "Opis aplikacji",
+  icons: { icon: "/favicon.png" },
+};
+
 export default async function RootLayout({
   children,
 }: Readonly<{
