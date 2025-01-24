@@ -8,7 +8,7 @@ export default function Navbar() {
         Portfolio
       </Link>
       <p className="navbar__heading">Magdalena Pęcak</p>
-      <Link className="navbar__link" href="/contact">
+      <Link className="navbar__link" href="/#contact-section">
         Kontakt
       </Link>
     </div>

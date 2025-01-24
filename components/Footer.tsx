@@ -7,7 +7,7 @@ export default function Footer() {
       <h6 className="footer__title">Magdalena Pęcak</h6>
       <div className="footer__nav-wrapper">
         <Link href="/portfolio">Portfolio</Link>
-        <Link href="/">Contact</Link>
+        <Link href="/#contact-section">Contact</Link>
       </div>
       <div className="footer__media">
         <img src={"/facebook.svg"} className="footer__media__button" />
