@@ -28,7 +28,7 @@ export default function PortfolioSlider({ data }: { data: FolderI }) {
       <div className="portfolio-slider__head">
         <div className="portfolio-slider__head-name">
           <p className="portfolio-slider__name">{data.name}</p>
-          <Link href="/">See full</Link>
+          <Link href={`/folder/${data.id}`}>See full</Link>
         </div>
         <ArrowNav onClick={() => {}} classname="portfolio-slider__nav" />
       </div>

@@ -58,13 +58,6 @@ export default function RecentPart() {
             }`}
           >
             <p className="recent__folder__name">{rf.name}</p>
-            {/* <img
-              src={i.url}
-              alt={`${rf.name} - ${i.id}`}
-              className={`recent__folder__img`}
-              style={{ gridArea: `img${index}` }}
-              key={i.id}
-            /> */}
             {getImages(rf.images.slice(0, 3)).map((i, index) => (
               <Image
                 width={400}
