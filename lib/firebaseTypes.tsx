@@ -36,6 +36,7 @@ export interface ContextValuesI {
   settings: SettingsI;
   authError: string;
 
+  uploadImages: (files: FileList) => void;
   handleLogin: (email: string, password: string) => Promise<void>;
   handleLogout: () => Promise<void>;
   getFolderImages: (value: string, searchBy?: "id" | "name") => ImgI[];
@@ -45,6 +46,7 @@ export interface ContextValuesI {
   changePortfolioOrder: (direction: -1 | 1, index: number) => void;
   getFolder: (id: string) => FolderI | null;
   getFolderCover: (id: string) => string;
+  removeImg: (url: string) => void;
 }
 
 export type FolderFormI = Omit<FolderI, "id">;

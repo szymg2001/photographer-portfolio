@@ -54,12 +54,11 @@ async function fetchSettings(): Promise<SettingsI> {
   }
 }
 
+export function extractToken(url: string): string {
+  const tokenMatch = url.match(/[?&]token=([^&]+)/);
+  return tokenMatch ? tokenMatch[1] : "";
+}
 async function fetchImgs(): Promise<ImgI[]> {
-  function extractToken(url: string): string {
-    const tokenMatch = url.match(/[?&]token=([^&]+)/);
-    return tokenMatch ? tokenMatch[1] : "";
-  }
-
   try {
     const listRef = ref(storage, "files");
     const imgs = await listAll(listRef);

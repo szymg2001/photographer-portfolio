@@ -19,6 +19,7 @@
   padding: 10px;
   display: flex;
   justify-content: flex-end;
+  gap: 20px;
 }
 
 .control__head {
@@ -169,5 +170,19 @@
 
 .control__portfolio-order__change-order:hover {
   background-color: rgba(216, 112, 147, 0.2);
+  cursor: pointer;
+}
+
+/*CONTROL - Photos*/
+.control-photos__images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.control-photos__image {
+  height: 300px;
+  width: auto;
   cursor: pointer;
 }

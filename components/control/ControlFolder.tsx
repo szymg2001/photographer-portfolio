@@ -23,6 +23,12 @@ export default function ControlFolder({ data }: ControlFolderI) {
         </span>
       </p>
       <p className="control-folder__info">
+        Folder publiczny {`(Widoczny np. w ostatnich folderach)`}:{" "}
+        <span className="control-folder__info__mark">
+          {data.public ? "Tak" : "Nie"}
+        </span>
+      </p>
+      <p className="control-folder__info">
         Liczba zdjęć:{" "}
         <span className="control-folder__info__mark">
           {`${data.images.length}${data.imgLimit ? `/${data.imgLimit}` : ""}`}

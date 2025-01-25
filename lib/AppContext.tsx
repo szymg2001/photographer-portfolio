@@ -9,8 +9,15 @@ import {
   ImgI,
 } from "./firebaseTypes";
 import { addDoc, collection, doc, setDoc, updateDoc } from "firebase/firestore";
-import { db } from "./firebase";
+import { db, storage } from "./firebase";
 import useAuth from "./useAuth";
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytes,
+} from "firebase/storage";
+import { extractToken } from "./api";
 
 const AppContext = React.createContext({} as ContextValuesI);
 
@@ -30,6 +37,24 @@ export const AppContextProvider = ({
   const [folders, setFolders] = React.useState(initialData.folders);
   const [settings, setSettings] = React.useState(initialData.settings);
   const [imgs, setImgs] = React.useState(initialData.imgs);
+
+  //Methods
+  async function uploadImages(files: FileList) {
+    if (!files || files.length === 0) return;
+    try {
+      const uploadedImages: ImgI[] = [];
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+
+        const storageRef = ref(storage, `files/${file.name}`);
+        await uploadBytes(storageRef, file);
+
+        const url = await getDownloadURL(storageRef);
+        uploadedImages.push({ id: extractToken(url), url });
+      }
+      setImgs((prev) => [...prev, ...uploadedImages]);
+    } catch (error) {}
+  }
 
   function getFolderImages(
     value: string,
@@ -100,6 +125,19 @@ export const AppContextProvider = ({
       : getImages(folder.images)[0].url;
   }
 
+  function getStoragePath(url: string): string {
+    let filePath = url.split("/o/")[1];
+    filePath = filePath.split("?")[0];
+    return decodeURIComponent(filePath);
+  }
+
+  async function removeImg(url: string) {
+    let path = getStoragePath(url);
+
+    const fileRef = ref(storage, path);
+    await deleteObject(fileRef);
+  }
+
   const value: ContextValuesI = {
     user,
     folders,
@@ -115,6 +153,8 @@ export const AppContextProvider = ({
     editFolder,
     changePortfolioOrder,
     getFolderCover,
+    uploadImages,
+    removeImg,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

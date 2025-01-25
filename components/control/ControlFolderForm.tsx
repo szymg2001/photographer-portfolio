@@ -8,11 +8,15 @@ import "@/styles/control/folder-create.css";
 interface ControlFolderFormI {
   data: FolderFormI;
   onSubmit: (data: FolderFormI) => void;
+  onCancel?: () => void;
+  cancelMessage?: string;
 }
 
 export default function ControlFolderForm({
   data,
   onSubmit,
+  onCancel,
+  cancelMessage = "Anuluj",
 }: ControlFolderFormI) {
   const [folderData, setFolderData] = React.useState(data);
 
@@ -69,9 +73,11 @@ export default function ControlFolderForm({
         <button className="control__button" type="submit">
           Zapisz
         </button>
-        <button className="control__button" type="reset">
-          Wyczyść
-        </button>
+        {onCancel && (
+          <button className="control__button" onClick={onCancel}>
+            {cancelMessage}
+          </button>
+        )}
       </div>
     </form>
   );

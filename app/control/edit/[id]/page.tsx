@@ -60,6 +60,7 @@ export default function Edit({ params }: { params: Promise<ParamsI> }) {
           <ControlFolderForm
             data={data}
             onSubmit={(data) => handleSubmitEdit(data)}
+            onCancel={() => router.push("/control")}
           />
           <ControlSection title="Zdjęcia">
             <div

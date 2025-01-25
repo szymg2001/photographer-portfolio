@@ -22,7 +22,7 @@ export default function SingleFolder({ folder }: { folder: FolderI }) {
         <button
           className="folder__view-button"
           onClick={() => {
-            router.push(`./portfolio/${folder.id}`);
+            router.push(`./folder/${folder.id}`);
           }}
         >
           Zobacz

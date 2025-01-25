@@ -9,8 +9,24 @@ import { initialFolderData } from "@/lib/firebaseTypes";
 import React from "react";
 
 export default function ControlPage() {
-  const { folders, createFolder, settings, changePortfolioOrder } =
-    useAppContext();
+  const {
+    folders,
+    createFolder,
+    settings,
+    changePortfolioOrder,
+    uploadImages,
+  } = useAppContext();
+  const [selectedFiles, setSelectedFiles] = React.useState<FileList | null>(
+    null
+  );
+
+  const handleUploadImg = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (selectedFiles) {
+      await uploadImages(selectedFiles);
+      setSelectedFiles(null);
+    }
+  };
 
   const orderedPortfolioFolders = React.useMemo(() => {
     return folders
@@ -47,7 +63,10 @@ export default function ControlPage() {
             <ControlFolder data={f} key={f.id} />
           ))}
       </ControlSection>
-      <ControlSection title="Porfolio" note="Kolejność wyodrębnionych folderów">
+      <ControlSection
+        title="Porfolio"
+        note="Kolejność wyodrębnionych folderów w portfolio"
+      >
         <ol className="control__portfolio-order">
           {orderedPortfolioFolders.map((f, index) => (
             <li className="control__portfolio-order__element">
@@ -65,6 +84,20 @@ export default function ControlPage() {
             </li>
           ))}
         </ol>
+      </ControlSection>
+      <ControlSection title="Prześlij zdjęcia">
+        <form onSubmit={handleUploadImg}>
+          <input
+            type="file"
+            multiple
+            onChange={(e) => {
+              if (e.target.files) {
+                setSelectedFiles(e.target.files);
+              }
+            }}
+          />
+          <button type="submit">Prześlij</button>
+        </form>
       </ControlSection>
     </>
   );
