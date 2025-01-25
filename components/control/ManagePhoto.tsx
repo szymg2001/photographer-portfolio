@@ -4,7 +4,15 @@ import { useAppContext } from "@/lib/AppContext";
 import Image from "next/image";
 import React from "react";
 
-export default function ManagePhoto({ id, url }: { id: string; url: string }) {
+export default function ManagePhoto({
+  id,
+  url,
+  onClose,
+}: {
+  id: string;
+  url: string;
+  onClose: () => void;
+}) {
   const { folders, removeImg } = useAppContext();
   const foldersList = React.useMemo(() => {
     return folders
@@ -26,11 +34,20 @@ export default function ManagePhoto({ id, url }: { id: string; url: string }) {
 
   return (
     <div className="manage-photo">
-      <Image width={300} height={300} alt="Zdjęcie do zarządzania" src={url} />
-      <p className="manage-photo__paragraph">
-        identyfikator: <span>{id}</span>
+      <span className="control__link manage-photo__close" onClick={onClose}>
+        Zamknij
+      </span>
+      <Image
+        className="manage-photo__img"
+        width={300}
+        height={300}
+        alt="Zdjęcie do zarządzania"
+        src={url}
+      />
+      <p className="manage-photo__paragraph-id">
+        id: <span>{id}</span>
       </p>
-      <p className="manage-photo__paragraph">Foldery w których występuje:</p>
+      <p className="manage-photo__paragraph">Foldery, w których występuje:</p>
       <ul className="manage-photo__folders-list">
         {foldersList.map((f, index) => (
           <li className="manage-photo__folder" key={index}>

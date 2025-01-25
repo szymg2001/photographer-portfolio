@@ -186,3 +186,73 @@
   width: auto;
   cursor: pointer;
 }
+
+/*CONTROL - Manage photos*/
+.manage-photo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 30px;
+  height: 80vh;
+  width: max(50vw, 350px);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.34);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.manage-photo__img {
+  width: auto;
+  height: auto;
+  max-height: 400px;
+  max-width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.12);
+  margin-bottom: 5px;
+}
+
+.manage-photo__paragraph-id {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 20px;
+}
+
+.manage-photo__paragraph-id > span {
+  font-weight: var(--font-bold);
+  font-style: italic;
+}
+
+.manage-photo__paragraph {
+  font-weight: bold;
+}
+
+.manage-photo__folders-list {
+  border: 1px solid rgba(0, 0, 0, 0.22);
+  margin-top: 5px;
+  padding: 10px 5px;
+  width: 100%;
+}
+
+.manage-photo__folder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0px;
+}
+
+.manage-photo__menu {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.manage-photo__close {
+  padding: 10px 0px;
+  width: 100%;
+  text-align: right;
+}

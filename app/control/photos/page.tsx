@@ -13,7 +13,12 @@ export default function ControlPhotos() {
 
   return (
     <div className="control-photos">
-      {managingPhoto && <ManagePhoto {...managingPhoto} />}
+      {managingPhoto && (
+        <ManagePhoto
+          {...managingPhoto}
+          onClose={() => setManagingPhoto(null)}
+        />
+      )}
       <Link className="control-photos__back-link" href="/control">
         Wróć
       </Link>
