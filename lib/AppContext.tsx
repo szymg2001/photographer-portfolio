@@ -8,7 +8,14 @@ import {
   FolderI,
   ImgI,
 } from "./firebaseTypes";
-import { addDoc, collection, doc, setDoc, updateDoc } from "firebase/firestore";
+import {
+  addDoc,
+  arrayRemove,
+  collection,
+  doc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { db, storage } from "./firebase";
 import useAuth from "./useAuth";
 import {
@@ -138,6 +145,22 @@ export const AppContextProvider = ({
     await deleteObject(fileRef);
   }
 
+  async function removeImgFromFolder(imgId: string, folderId: string) {
+    let folderRef = doc(db, "folders", folderId);
+
+    await updateDoc(folderRef, {
+      images: arrayRemove(imgId),
+    });
+
+    setFolders((prev) =>
+      prev.map((f) =>
+        f.id === folderId
+          ? { ...f, images: f.images.filter((i) => i !== imgId) }
+          : f
+      )
+    );
+  }
+
   const value: ContextValuesI = {
     user,
     folders,
@@ -155,6 +178,7 @@ export const AppContextProvider = ({
     getFolderCover,
     uploadImages,
     removeImg,
+    removeImgFromFolder,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

@@ -13,7 +13,7 @@ export default function ManagePhoto({
   url: string;
   onClose: () => void;
 }) {
-  const { folders, removeImg } = useAppContext();
+  const { folders, removeImg, removeImgFromFolder } = useAppContext();
   const foldersList = React.useMemo(() => {
     return folders
       .filter((f) => f.images.some((val) => val === id))
@@ -24,13 +24,16 @@ export default function ManagePhoto({
   }, [folders, id]);
 
   const handleRemove = () => {
+    if (foldersList)
+      return window.alert(
+        "Usuń zdjęcie z folderów przed całkowitym usunięciem."
+      );
     const confirmed = window.confirm("Na pewno chcesz usunąć to zdjęcie?");
+
     if (confirmed) {
       removeImg(url);
     }
   };
-
-  const handleRemovingFromFolder = (id: string) => {};
 
   return (
     <div className="manage-photo">
@@ -54,7 +57,7 @@ export default function ManagePhoto({
             <p className="manage-photo__folder-name">{f.name}</p>
             <button
               className="manage-photo__folder-button"
-              onClick={() => handleRemovingFromFolder(f.id)}
+              onClick={() => removeImgFromFolder(id, f.id)}
             >
               Usuń z folderu
             </button>
