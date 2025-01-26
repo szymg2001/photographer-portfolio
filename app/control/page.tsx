@@ -7,6 +7,7 @@ import { useAppContext } from "@/lib/AppContext";
 import ControlFolder from "@/components/control/ControlFolder";
 import { initialFolderData } from "@/lib/firebaseTypes";
 import React from "react";
+import PasswordForm from "@/components/control/PasswordForm";
 
 export default function ControlPage() {
   const {
@@ -98,6 +99,11 @@ export default function ControlPage() {
           />
           <button type="submit">Prześlij</button>
         </form>
+      </ControlSection>
+      <ControlSection title="Zarządzaj kontem">
+        <ControlSection title="Zmień hasło">
+          <PasswordForm />
+        </ControlSection>
       </ControlSection>
     </>
   );
