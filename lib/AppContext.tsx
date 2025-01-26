@@ -52,7 +52,6 @@ export const AppContextProvider = ({
       const uploadedImages: ImgI[] = [];
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
-
         const storageRef = ref(storage, `files/${file.name}`);
         await uploadBytes(storageRef, file);
 
@@ -138,11 +137,16 @@ export const AppContextProvider = ({
     return decodeURIComponent(filePath);
   }
 
-  async function removeImg(url: string) {
-    let path = getStoragePath(url);
+  async function removeImg(urls: string[]) {
+    if (!urls || urls.length === 0) return;
+    urls.forEach(async (url) => {
+      let path = getStoragePath(url);
+      let fileRef = ref(storage, path);
+      await deleteObject(fileRef);
+    });
 
-    const fileRef = ref(storage, path);
-    await deleteObject(fileRef);
+    let newImgs: ImgI[] = imgs.filter((i) => !urls.some((v) => v === i.url));
+    setImgs(newImgs);
   }
 
   async function removeImgFromFolder(imgId: string, folderId: string) {

@@ -69,7 +69,7 @@ export default function ControlPage() {
       >
         <ol className="control__portfolio-order">
           {orderedPortfolioFolders.map((f, index) => (
-            <li className="control__portfolio-order__element">
+            <li className="control__portfolio-order__element" key={index}>
               <img
                 src="/expand.svg"
                 className="control__portfolio-order__change-order"

@@ -72,5 +72,5 @@ body {
   all: unset;
   text-decoration: underline;
   cursor: pointer;
-  color: var(--control--active-color);
+  color: var(--accent);
 }

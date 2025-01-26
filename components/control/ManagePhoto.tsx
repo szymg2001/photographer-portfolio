@@ -24,14 +24,15 @@ export default function ManagePhoto({
   }, [folders, id]);
 
   const handleRemove = () => {
-    if (foldersList)
+    if (foldersList.length > 0)
       return window.alert(
         "Usuń zdjęcie z folderów przed całkowitym usunięciem."
       );
     const confirmed = window.confirm("Na pewno chcesz usunąć to zdjęcie?");
 
     if (confirmed) {
-      removeImg(url);
+      removeImg([url]);
+      onClose();
     }
   };
 
