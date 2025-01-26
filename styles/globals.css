@@ -67,3 +67,10 @@ body {
     width: 13px;
   }
 }
+
+.general__link {
+  all: unset;
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--control--active-color);
+}

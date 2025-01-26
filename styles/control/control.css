@@ -35,13 +35,6 @@
   font-size: var(--control--heading-size);
 }
 
-.control__link {
-  all: unset;
-  text-decoration: underline;
-  cursor: pointer;
-  color: var(--control--active-color);
-}
-
 .control__image {
   max-height: 200px;
 }

@@ -70,7 +70,7 @@ export default function Edit({ params }: { params: Promise<ParamsI> }) {
             >
               <div className="edit__photos__menu">
                 <span
-                  className="control__link"
+                  className="general__link"
                   onClick={() => setEditPhotos((prev) => !prev)}
                 >
                   Edytuj

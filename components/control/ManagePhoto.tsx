@@ -37,7 +37,7 @@ export default function ManagePhoto({
 
   return (
     <div className="manage-photo">
-      <span className="control__link manage-photo__close" onClick={onClose}>
+      <span className="general__link manage-photo__close" onClick={onClose}>
         Zamknij
       </span>
       <Image

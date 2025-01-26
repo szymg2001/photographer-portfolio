@@ -10,10 +10,10 @@ export default function ControlFolder({ data }: ControlFolderI) {
     <div className="control-folder">
       <div className="control-folder__head">
         <p className="control-folder__name">{data.name}</p>
-        <Link className="control__link" href={`control/edit/${data.id}`}>
+        <Link className="general__link" href={`control/edit/${data.id}`}>
           Edytuj
         </Link>
-        <span className="control__link">Usuń</span>
+        <span className="general__link">Usuń</span>
       </div>
       <p className="control-folder__description">{data.description}</p>
       <p className="control-folder__info">
