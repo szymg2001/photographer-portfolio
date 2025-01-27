@@ -22,6 +22,9 @@
 .navbar__heading {
   font-size: 20px;
   font-weight: var(--font-bold);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .navbar__link {
@@ -34,14 +37,34 @@
 .navbar__link::before {
   content: "";
   height: 1px;
-  background-color: black;
+  background-color: var(--accent);
   width: 0px;
   position: absolute;
   bottom: 0;
   left: -15px;
-  transition: 0.25s ease-in-out;
+  transition: 0.35s ease-in-out;
 }
 .navbar__link:hover::before {
   width: 69%;
   left: -5px;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar {
+    height: fit-content;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0px;
+  }
+  .navbar__heading {
+    position: static;
+    transform: none;
+  }
+
+  .navbar::after {
+    position: absolute;
+    left: 50%;
+    width: 45%;
+    transform: translateX(-50%);
+  }
 }
