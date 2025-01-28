@@ -15,7 +15,7 @@
   content: "";
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-65%);
   left: 10%;
   height: 1px;
   background-color: #fff;
@@ -80,5 +80,30 @@
 
   .footer__nav-wrapper {
     gap: 70px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    grid-template-areas:
+      "title title"
+      "nav nav"
+      "media media"
+      "copy copy";
+    row-gap: 10px;
+    padding: 20px 0px;
+  }
+  .footer::after {
+    transform: translate(-50%, -50%);
+    left: 50%;
+  }
+  .footer__title {
+    margin-bottom: 15px;
+  }
+  .footer__nav-wrapper {
+    margin-bottom: 40px;
+  }
+  .footer__copy {
+    margin-top: 15px;
   }
 }
