@@ -1,10 +1,6 @@
 .about {
-  --about--back-image-w: 255px;
-  --about--back-image-l: 15%;
-  --about--back-image-b: 7%;
+  --about--back-image-w: 290px;
   --about--front-image-w: 320px;
-  --about--front-image-l: 45%;
-  --about--front-image-b: 12%;
 
   --about--title-size: 48px;
 
@@ -15,32 +11,29 @@
   height: 520px;
   margin-bottom: 100px;
 }
-
 .about__images {
+  width: 50%;
   position: relative;
-  min-width: 50%;
 }
 
 .about__image-wrapper {
   position: absolute;
+  left: 50%;
+  height: auto;
+  aspect-ratio: 2/3;
 }
 
 .about__image {
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.44);
   object-fit: cover;
   width: 100%;
-  aspect-ratio: 2/3;
 }
 
 .about__image-wrapper:nth-child(1) {
-  left: var(--about--back-image-l);
   width: var(--about--back-image-w);
-  bottom: var(--about--back-image-b);
 }
 
 .about__image-wrapper:nth-child(2) {
-  left: var(--about--front-image-l);
-  bottom: var(--about--front-image-b);
   width: var(--about--front-image-w);
 }
 
@@ -89,21 +82,18 @@
 
 @media screen and (max-width: 1400px) {
   .about {
-    --about--back-image-w: 180px;
-    --about--front-image-w: 230px;
-
-    --about--back-image-l: 15%;
-    --about--back-image-b: 8%;
-    --about--front-image-l: 40%;
-    --about--front-image-b: 10%;
+    --about--back-image-w: 260px;
+    --about--front-image-w: 290px;
 
     --about--title-size: 36px;
     height: 420px;
   }
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1150px) {
   .about {
+    --about--back-image-w: 215px;
+    --about--front-image-w: 245px;
     flex-direction: column;
     height: fit-content;
     align-items: center;
@@ -113,6 +103,7 @@
   }
   .about__images {
     margin-bottom: 25px;
+    height: 370px;
   }
 
   .about__image {
@@ -138,14 +129,13 @@
 @media screen and (max-width: 550px) {
   .about {
     --about--back-image-w: 140px;
-    --about--front-image-w: 190px;
-
-    --about--back-image-l: 15%;
-    --about--back-image-b: 8%;
-    --about--front-image-l: 40%;
-    --about--front-image-b: 10%;
+    --about--front-image-w: 170px;
   }
   .about__description {
     max-width: 85%;
+  }
+
+  .about__images {
+    height: 270px;
   }
 }

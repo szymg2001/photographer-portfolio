@@ -24,23 +24,34 @@ export default function AboutImages() {
     <div className="about__images">
       <motion.div
         className="about__image-wrapper"
-        initial={{ transform: "translateY(20%) rotate(0deg)", opacity: 0 }}
+        initial={{
+          transform: "translateY(20%) rotate(0deg) translateX(-100%)",
+          opacity: 0,
+        }}
         transition={{ duration: 0.55, delay: 0.1 }}
-        whileInView={{ transform: "translateY(0) rotate(-8deg)", opacity: 1 }}
+        whileInView={{
+          transform: "translateY(0) rotate(-8deg) translateX(-100%)",
+          opacity: 1,
+        }}
       >
         <Image
           className="about__image"
           src={photos[0].url}
           alt={`About photo 1`}
           key={photos[0].id}
-          width={400}
-          height={400}
+          fill
         />
       </motion.div>
       <motion.div
         className="about__image-wrapper"
-        initial={{ transform: "translateY(20%) rotate(0deg)", opacity: 0 }}
-        whileInView={{ transform: "translateY(0) rotate(10deg)", opacity: 1 }}
+        initial={{
+          transform: "translateY(20%) rotate(0deg) translateX(0%)",
+          opacity: 0,
+        }}
+        whileInView={{
+          transform: "translateY(0) rotate(10deg) translateX(0%)",
+          opacity: 1,
+        }}
         transition={{ duration: 0.55 }}
       >
         <Image
@@ -48,8 +59,7 @@ export default function AboutImages() {
           src={photos[1].url}
           alt={`About photo 2`}
           key={photos[1].id}
-          width={400}
-          height={400}
+          fill
         />
       </motion.div>
     </div>
