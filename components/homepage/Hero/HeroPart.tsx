@@ -39,7 +39,6 @@ export default function HeroPart() {
         width={550}
         height={870}
       />
-      {/* <HeroPhoto src={heroPhotos[selected].url} /> */}
     </div>
   );
 }
