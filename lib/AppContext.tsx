@@ -40,7 +40,8 @@ export const AppContextProvider = ({
   initialData: AppContextPropI;
 }) => {
   //State
-  const { user, handleLogin, handleLogout, authError } = useAuth();
+  const { user, handleLogin, handleLogout, authError, resetPassword } =
+    useAuth();
   const [folders, setFolders] = React.useState(initialData.folders);
   const [settings, setSettings] = React.useState(initialData.settings);
   const [imgs, setImgs] = React.useState(initialData.imgs);
@@ -183,6 +184,7 @@ export const AppContextProvider = ({
     uploadImages,
     removeImg,
     removeImgFromFolder,
+    resetPassword,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

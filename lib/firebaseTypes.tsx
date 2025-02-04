@@ -48,6 +48,7 @@ export interface ContextValuesI {
   getFolderCover: (id: string) => string;
   removeImg: (urls: string[]) => void;
   removeImgFromFolder: (imgId: string, folderId: string) => void;
+  resetPassword: (email: string) => void;
 }
 
 export type FolderFormI = Omit<FolderI, "id">;

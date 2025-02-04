@@ -24,7 +24,7 @@ export default function HeroPartMenu({
             height={220}
           />
           <div className="hero-menu__element__hover">
-            <img className="hero-menu__element__hover-svg" /* src={eye} */ />
+            <img className="hero-menu__element__hover-svg" src="/eye.svg" />
           </div>
         </div>
       ))}
