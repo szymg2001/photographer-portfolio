@@ -37,6 +37,9 @@ export default function FolderPage({
         <p className="folder-page__date">{folder.createdAt}</p>
       </div>
       <p className="folder-page__description">{folder.description}</p>
+      <Link href="/portfolio" className="general__link folder-page__back-url">
+        Wróć
+      </Link>
       <div className="folder-page__photos">
         {photos.map((p) => (
           <Image
