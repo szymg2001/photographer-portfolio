@@ -8,6 +8,7 @@ import ControlFolder from "@/components/control/ControlFolder";
 import { initialFolderData } from "@/lib/firebaseTypes";
 import React from "react";
 import PasswordForm from "@/components/control/PasswordForm";
+import ControlFileUpload from "@/components/control/ControlFileUpload";
 
 export default function ControlPage() {
   const {
@@ -17,17 +18,6 @@ export default function ControlPage() {
     changePortfolioOrder,
     uploadImages,
   } = useAppContext();
-  const [selectedFiles, setSelectedFiles] = React.useState<FileList | null>(
-    null
-  );
-
-  const handleUploadImg = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (selectedFiles) {
-      await uploadImages(selectedFiles);
-      setSelectedFiles(null);
-    }
-  };
 
   const orderedPortfolioFolders = React.useMemo(() => {
     return folders
@@ -87,18 +77,7 @@ export default function ControlPage() {
         </ol>
       </ControlSection>
       <ControlSection title="Prześlij zdjęcia">
-        <form onSubmit={handleUploadImg}>
-          <input
-            type="file"
-            multiple
-            onChange={(e) => {
-              if (e.target.files) {
-                setSelectedFiles(e.target.files);
-              }
-            }}
-          />
-          <button type="submit">Prześlij</button>
-        </form>
+        <ControlFileUpload />
       </ControlSection>
       <ControlSection title="Zarządzaj kontem">
         <ControlSection title="Zmień hasło">

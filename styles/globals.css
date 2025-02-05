@@ -74,3 +74,10 @@ body {
   cursor: pointer;
   color: var(--accent);
 }
+
+.error-message {
+  height: 22px;
+  display: flex;
+  align-items: center;
+  color: rgb(155, 35, 35);
+}

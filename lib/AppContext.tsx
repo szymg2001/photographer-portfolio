@@ -49,18 +49,22 @@ export const AppContextProvider = ({
   //Methods
   async function uploadImages(files: FileList) {
     if (!files || files.length === 0) return;
-    try {
-      const uploadedImages: ImgI[] = [];
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const storageRef = ref(storage, `files/${file.name}`);
-        await uploadBytes(storageRef, file);
 
-        const url = await getDownloadURL(storageRef);
-        uploadedImages.push({ id: extractToken(url), url });
+    const uploadedImages: ImgI[] = [];
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+
+      if (!file.type || file.type.split("/")[0] !== "image") {
+        throw new Error("Przesłano niepoprawny plik. Dozwolone tylko zdjęcia.");
       }
-      setImgs((prev) => [...prev, ...uploadedImages]);
-    } catch (error) {}
+
+      const storageRef = ref(storage, `files/${file.name}`);
+      await uploadBytes(storageRef, file);
+
+      const url = await getDownloadURL(storageRef);
+      uploadedImages.push({ id: extractToken(url), url });
+    }
+    setImgs((prev) => [...prev, ...uploadedImages]);
   }
 
   function getFolderImages(
