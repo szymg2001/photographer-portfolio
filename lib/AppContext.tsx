@@ -12,6 +12,7 @@ import {
   addDoc,
   arrayRemove,
   collection,
+  deleteDoc,
   doc,
   setDoc,
   updateDoc,
@@ -170,25 +171,48 @@ export const AppContextProvider = ({
     );
   }
 
+  async function removeFolder(folderId: string) {
+    let folderRef = doc(db, "folders", folderId);
+
+    let folderData = folders.find((f) => f.id === folderId);
+    if (!folderData) throw new Error("Nie znaleziono folderu");
+
+    if (folderData.isDefault)
+      throw new Error(
+        "Nie można usunąć tego folderu, uniemożliwi to poprawne działanie strony."
+      );
+
+    await deleteDoc(folderRef);
+  }
+
   const value: ContextValuesI = {
     user,
     folders,
     imgs,
     settings,
     authError,
+
+    //FOLDER
+    getFolder,
+    createFolder,
+    editFolder,
+    removeFolder,
+    removeImgFromFolder,
+    getFolderImages,
+    getFolderCover,
+
+    //IMG
+    uploadImages,
+    getImages,
+    removeImg,
+
+    //AUTH
     handleLogin,
     handleLogout,
-    getFolder,
-    getFolderImages,
-    createFolder,
-    getImages,
-    editFolder,
-    changePortfolioOrder,
-    getFolderCover,
-    uploadImages,
-    removeImg,
-    removeImgFromFolder,
     resetPassword,
+
+    //OTHER
+    changePortfolioOrder,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
