@@ -12,6 +12,7 @@ export interface FolderI {
   imgLimit?: number;
   showInPortfolio: boolean;
   coverId: string | null;
+  photoDate: string;
 }
 
 export interface ImgI {
@@ -35,6 +36,7 @@ export interface ContextValuesI {
   imgs: ImgI[];
   settings: SettingsI;
   authError: string;
+  isUploading: boolean;
 
   uploadImages: (files: FileList) => void;
   handleLogin: (email: string, password: string) => Promise<void>;
@@ -58,6 +60,7 @@ export const initialFolderData: FolderFormI = {
   images: [],
   isDefault: false,
   createdAt: new Date().toISOString(),
+  photoDate: new Date().toISOString(),
   showInPortfolio: false,
   description: "",
   public: false,

@@ -9,10 +9,18 @@ import Image from "next/image";
 
 export default function HeroPart() {
   const { getFolderImages } = useAppContext();
-  const heroPhotos = React.useMemo(
-    () => getFolderImages("heroPhotos", "name"),
-    []
-  );
+  const heroPhotos = React.useMemo(() => {
+    let photosArray = getFolderImages("heroPhotos", "name");
+    return Array(2)
+      .fill(null)
+      .map(
+        (_, index) =>
+          photosArray[index] ?? {
+            id: `PLACEHOLDER${index}`,
+            url: "https://placehold.co/600x800",
+          }
+      );
+  }, []);
   const [selected, setSelected] = React.useState(0);
 
   return (

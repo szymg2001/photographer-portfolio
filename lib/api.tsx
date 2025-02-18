@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { auth, db, storage } from "./firebase";
 import { getDownloadURL, listAll, ref } from "firebase/storage";
 import { AppContextPropI, FolderI, ImgI, SettingsI } from "./firebaseTypes";
@@ -30,8 +30,9 @@ async function fetchFolders(): Promise<FolderI[]> {
   const foldersCollectionRef = collection(db, "folders");
 
   try {
-    const query = await getDocs(foldersCollectionRef);
-    const folders = query.docs.map((d) => ({
+    const q = query(foldersCollectionRef, orderBy("photoDate", "desc"));
+    const queryFolders = await getDocs(q);
+    const folders = queryFolders.docs.map((d) => ({
       id: d.id,
       ...d.data(),
     })) as FolderI[];

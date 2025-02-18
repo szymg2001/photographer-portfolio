@@ -50,8 +50,8 @@ export default function ControlFolderForm({
       />
       <ControlInput
         id="create-folder__date"
-        onChange={(v) => handleChange("createdAt", v)}
-        label="Data zdjęć"
+        onChange={(v) => handleChange("photoDate", v)}
+        label="Data / okres robienia zdjęć"
         type="date"
       />
       <ControlInput

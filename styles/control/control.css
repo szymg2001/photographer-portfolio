@@ -259,3 +259,48 @@
   width: 100%;
   text-align: right;
 }
+
+/*PHOTO INPUT*/
+.photo-input__hidden-input-wrapper {
+  height: 0px;
+  overflow: hidden;
+}
+
+.photo-input__text {
+  margin-bottom: 15px;
+}
+
+.photo-input__button {
+  all: unset;
+  padding: 4px 5px;
+  background-color: var(--accent);
+  color: #fff;
+  box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.photo-input__button:hover {
+  filter: brightness(1.2);
+}
+
+.photo-input__button + .photo-input__button {
+  margin-left: 15px;
+}
+
+.photo-input__text-selected {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.photo-input__preview-list {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.photo-input__preview-img {
+  height: 250px;
+  width: auto;
+}

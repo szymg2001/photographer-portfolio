@@ -43,6 +43,7 @@ export const AppContextProvider = ({
   //State
   const { user, handleLogin, handleLogout, authError, resetPassword } =
     useAuth();
+  const [isUploading, setIsUploading] = React.useState(false);
   const [folders, setFolders] = React.useState(initialData.folders);
   const [settings, setSettings] = React.useState(initialData.settings);
   const [imgs, setImgs] = React.useState(initialData.imgs);
@@ -59,6 +60,7 @@ export const AppContextProvider = ({
         throw new Error("Przesłano niepoprawny plik. Dozwolone tylko zdjęcia.");
       }
 
+      setIsUploading(true);
       const storageRef = ref(storage, `files/${file.name}`);
       await uploadBytes(storageRef, file);
 
@@ -66,6 +68,7 @@ export const AppContextProvider = ({
       uploadedImages.push({ id: extractToken(url), url });
     }
     setImgs((prev) => [...prev, ...uploadedImages]);
+    setIsUploading(false);
   }
 
   function getFolderImages(
@@ -191,6 +194,7 @@ export const AppContextProvider = ({
     imgs,
     settings,
     authError,
+    isUploading,
 
     //FOLDER
     getFolder,
