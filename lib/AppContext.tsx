@@ -26,6 +26,7 @@ import {
   uploadBytes,
 } from "firebase/storage";
 import { extractToken } from "./api";
+import imageCompression from "browser-image-compression";
 
 const AppContext = React.createContext({} as ContextValuesI);
 
@@ -43,7 +44,7 @@ export const AppContextProvider = ({
   //State
   const { user, handleLogin, handleLogout, authError, resetPassword } =
     useAuth();
-  const [isUploading, setIsUploading] = React.useState(false);
+  const [isUploading, setIsUploading] = React.useState<string>("");
   const [folders, setFolders] = React.useState(initialData.folders);
   const [settings, setSettings] = React.useState(initialData.settings);
   const [imgs, setImgs] = React.useState(initialData.imgs);
@@ -60,15 +61,28 @@ export const AppContextProvider = ({
         throw new Error("Przesłano niepoprawny plik. Dozwolone tylko zdjęcia.");
       }
 
-      setIsUploading(true);
-      const storageRef = ref(storage, `files/${file.name}`);
-      await uploadBytes(storageRef, file);
+      setIsUploading(
+        `${i + 1}/${files.length} Kompresja zdjęcia "${file.name}"`
+      );
+
+      const compressedFile = await imageCompression(file, {
+        fileType: "image/webp",
+        maxSizeMB: 1,
+        useWebWorker: true,
+        initialQuality: 1,
+      });
+
+      setIsUploading(
+        `${i + 1}/${files.length} Przesyłanie zdjęcia "${file.name}"`
+      );
+      const storageRef = ref(storage, `files/${compressedFile.name}`);
+      await uploadBytes(storageRef, compressedFile);
 
       const url = await getDownloadURL(storageRef);
       uploadedImages.push({ id: extractToken(url), url });
     }
     setImgs((prev) => [...prev, ...uploadedImages]);
-    setIsUploading(false);
+    setIsUploading("");
   }
 
   function getFolderImages(

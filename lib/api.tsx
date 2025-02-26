@@ -37,6 +37,7 @@ async function fetchFolders(): Promise<FolderI[]> {
       ...d.data(),
     })) as FolderI[];
 
+    console.log("API", folders);
     return folders;
   } catch (error) {
     throw error;
@@ -70,6 +71,8 @@ async function fetchImgs(): Promise<ImgI[]> {
         return { url, id: extractToken(url) };
       })
     );
+
+    console.log("API", imgsList);
 
     return imgsList;
   } catch (error) {

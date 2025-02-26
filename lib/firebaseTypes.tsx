@@ -36,7 +36,7 @@ export interface ContextValuesI {
   imgs: ImgI[];
   settings: SettingsI;
   authError: string;
-  isUploading: boolean;
+  isUploading: string;
 
   uploadImages: (files: FileList) => void;
   handleLogin: (email: string, password: string) => Promise<void>;

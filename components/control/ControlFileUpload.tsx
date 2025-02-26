@@ -45,7 +45,7 @@ export default function ControlFileUpload() {
     setSelectedFiles(dt.files);
   };
 
-  if (isUploading) return <p>Przesyłanie zdjęć...</p>;
+  if (isUploading) return <p>{isUploading}</p>;
 
   return (
     <form onSubmit={handleUploadImg}>
