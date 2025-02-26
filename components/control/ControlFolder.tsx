@@ -29,7 +29,7 @@ export default function ControlFolder({ data }: ControlFolderI) {
     <div className="control-folder">
       <div className="control-folder__head">
         <p className="control-folder__name">{data.name}</p>
-        <Link className="general__link" href={`control/edit/${data.id}`}>
+        <Link className="general__link" href={`control/folder/${data.id}`}>
           Edytuj
         </Link>
         <span

@@ -1,0 +1,65 @@
+.form-folder-wrapper {
+  padding: 5px 0px 15px;
+}
+
+/* .form-folder-wrapper > form {
+  width: 400px;
+} */
+
+.create-folder__buttons {
+  margin-top: 25px;
+}
+.folder-form__photos,
+.folder-form__manage-photos {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.folder-form__image {
+  height: 200px;
+  width: auto;
+}
+
+.folder-form__manage-photo-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.folder-form__remove-hover,
+.folder-form__add-hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-bold);
+  font-size: 20px;
+  letter-spacing: 1px;
+  background-color: rgba(0, 0, 0, 0.75);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.folder-form__remove-hover:hover,
+.folder-form__add-hover:hover {
+  opacity: 1;
+}
+
+.folder-form__remove-hover > img,
+.folder-form__add-hover > img {
+  width: 60px;
+  height: 60px;
+}
+
+.folder-form__remove-hover {
+  color: #ff6f6f;
+}
+
+.folder-form__add-hover {
+  color: #fff46c;
+}

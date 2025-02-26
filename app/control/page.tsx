@@ -1,5 +1,45 @@
 "use client";
 
+import React from "react";
+import "@/styles/control/control.css";
+import ControlMenuButton from "@/components/control/ControlMenuButton";
+import ControlSection from "@/components/control/ControlSection";
+import { useAppContext } from "@/lib/AppContext";
+import ControlFolder from "@/components/control/ControlFolder";
+
+export default function ControlPage() {
+  const { folders } = useAppContext();
+  return (
+    <div className="control-wrapper">
+      <div className="control-menu">
+        <ControlMenuButton name="Utwórz folder" url="/control/folder/0" />
+        <ControlMenuButton name="Dodaj zdjęcia" url="#" iconName="upload" />
+        <ControlMenuButton name="Konto" url="#" iconName="settings" />
+        <ControlMenuButton name="Wszystkie zdjęcia" url="#" iconName="photos" />
+      </div>
+      <ControlSection
+        note="Foldery wymagane do poprawnego działania strony."
+        title="Foldery domyślne"
+      >
+        {folders
+          .filter((f) => f.isDefault)
+          .map((f) => (
+            <ControlFolder data={f} key={f.id} />
+          ))}
+      </ControlSection>
+      <ControlSection title="Pozostałe foldery">
+        {folders
+          .filter((f) => !f.isDefault)
+          .map((f) => (
+            <ControlFolder data={f} key={f.id} />
+          ))}
+      </ControlSection>
+    </div>
+  );
+}
+
+/* "use client";
+
 import ControlSection from "@/components/control/ControlSection";
 import "@/styles/control/control.css";
 import ControlFolderForm from "@/components/control/ControlFolderForm";
@@ -87,3 +127,4 @@ export default function ControlPage() {
     </>
   );
 }
+ */

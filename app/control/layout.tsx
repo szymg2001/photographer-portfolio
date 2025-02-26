@@ -18,9 +18,6 @@ export default function ControlLayout({
       <Heading value="Panel Zarządzania" />
       {user ? children : <AuthForm />}
       <div className="control__bottom-menu">
-        <Link className="general__link" href="/control/photos">
-          Wszystkie zdjęcia
-        </Link>
         <span className="general__link" onClick={handleLogout}>
           Wyloguj
         </span>

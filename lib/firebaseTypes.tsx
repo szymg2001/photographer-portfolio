@@ -55,7 +55,7 @@ export interface ContextValuesI {
 }
 
 export type FolderFormI = Omit<FolderI, "id">;
-export const initialFolderData: FolderFormI = {
+export const initialFolderData: FolderI = {
   name: "",
   images: [],
   isDefault: false,
@@ -65,4 +65,5 @@ export const initialFolderData: FolderFormI = {
   description: "",
   public: false,
   coverId: null,
+  id: "",
 };

@@ -1,0 +1,21 @@
+.control-subpage {
+  padding: 10px 40px 30px;
+}
+
+.control-subpage__head {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+  padding: 10px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  align-items: center;
+}
+
+.control-subpage__heading {
+  font-weight: var(--font-bold);
+  font-size: 24px;
+}
+
+.control-subpage__back {
+  color: var(--accent);
+}
