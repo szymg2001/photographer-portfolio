@@ -4,8 +4,7 @@ import React from "react";
 import "@/styles/control/control.css";
 import Heading from "@/components/Heading";
 import { useAppContext } from "@/lib/AppContext";
-import AuthForm from "@/components/control/AuthForm";
-import Link from "next/link";
+import AuthForm from "@/components/control/account/AuthForm";
 
 export default function ControlLayout({
   children,

@@ -1,7 +1,7 @@
 "use client";
 
 import { auth } from "@/lib/firebase";
-import ControlInput from "./ControlInput";
+import ControlInput from "../ControlInput";
 import React from "react";
 import {
   EmailAuthProvider,
@@ -9,7 +9,7 @@ import {
   updatePassword,
 } from "firebase/auth";
 import { useAppContext } from "@/lib/AppContext";
-import ControlForm from "./ControlForm";
+import ControlForm from "../ControlForm";
 
 const initialFormData = {
   oldPassword: "",
