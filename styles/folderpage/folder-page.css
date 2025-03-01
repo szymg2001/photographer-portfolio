@@ -29,14 +29,40 @@
 }
 
 .folder-page__photos {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 25px;
-  justify-content: center;
-  align-items: flex-start;
+  columns: 400px;
 }
-
 .folder-page__photo {
   height: auto;
+  width: 100%;
+  margin-bottom: 20px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+}
+
+/*IMG VIEW*/
+.img-view {
+  position: fixed;
+  z-index: 10000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.img-view__photo {
   width: auto;
+  height: auto;
+
+  max-width: 95vw;
+  max-height: 90vh;
+}
+
+.img-view__close {
+  text-align: center;
+  color: var(--accent);
+  text-decoration: underline;
+  padding: 5px;
+  cursor: pointer;
 }
