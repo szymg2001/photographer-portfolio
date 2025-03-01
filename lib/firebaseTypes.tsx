@@ -42,7 +42,7 @@ export interface ContextValuesI {
   handleLogin: (email: string, password: string) => Promise<void>;
   handleLogout: () => Promise<void>;
   getFolderImages: (value: string, searchBy?: "id" | "name") => ImgI[];
-  createFolder: (data: FolderFormI) => void;
+  createFolder: (data: CreateFolderI) => void;
   getImages: (idArray: string[]) => ImgI[];
   editFolder: (data: FolderI) => void;
   changePortfolioOrder: (direction: -1 | 1, index: number) => void;
@@ -54,8 +54,8 @@ export interface ContextValuesI {
   removeFolder: (folderId: string) => void;
 }
 
-export type FolderFormI = Omit<FolderI, "id">;
-export const initialFolderData: FolderI = {
+export type CreateFolderI = Omit<FolderI, "id">;
+export const initialFolderData: CreateFolderI = {
   name: "",
   images: [],
   isDefault: false,
@@ -65,5 +65,4 @@ export const initialFolderData: FolderI = {
   description: "",
   public: false,
   coverId: null,
-  id: "",
 };

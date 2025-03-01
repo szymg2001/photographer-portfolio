@@ -1,28 +1,37 @@
 "use client";
 
-import ManagePhoto from "@/components/control/ManagePhoto";
+import ManagePhoto from "@/components/control/photos/ManagePhoto";
+import ControlSubpage from "@/components/control/subpage/ControlSubpage";
 import { useAppContext } from "@/lib/AppContext";
 import { ImgI } from "@/lib/firebaseTypes";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
+import "@/styles/control/control-photos.css";
 
 export default function ControlPhotos() {
-  const [managingPhoto, setManagingPhoto] = React.useState<ImgI | null>(null);
   const { imgs } = useAppContext();
+  const [managingPhoto, setManagingPhoto] = React.useState<ImgI>(imgs[0]);
+
+  const dialogRef = React.useRef<HTMLDialogElement>(null);
+  const openModal = () => dialogRef.current?.showModal();
+  const closeModal = () => dialogRef.current?.close();
+
+  const handleSelect = (i: ImgI) => {
+    setManagingPhoto(i);
+    openModal();
+  };
 
   return (
-    <div className="control-photos">
-      {managingPhoto && (
+    <ControlSubpage title="Wszystkie zdjęcia">
+      <dialog ref={dialogRef} className="dialog-element">
         <ManagePhoto
           {...managingPhoto}
-          onClose={() => setManagingPhoto(null)}
+          onClose={() => {
+            closeModal();
+          }}
         />
-      )}
-      <Link className="control-photos__back-link" href="/control">
-        Wróć
-      </Link>
-      <div className="control-photos__images">
+      </dialog>
+      <div className="control-photos">
         {imgs.map((i) => (
           <Image
             key={`Zdjęcje: ${i.id}`}
@@ -31,10 +40,10 @@ export default function ControlPhotos() {
             width={300}
             height={300}
             className="control-photos__image"
-            onClick={() => setManagingPhoto(i)}
+            onClick={() => handleSelect(i)}
           />
         ))}
       </div>
-    </div>
+    </ControlSubpage>
   );
 }

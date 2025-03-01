@@ -4,7 +4,12 @@ import ControlForm from "@/components/control/ControlForm";
 import ControlInput from "@/components/control/ControlInput";
 import ControlSubpage from "@/components/control/subpage/ControlSubpage";
 import { useAppContext } from "@/lib/AppContext";
-import { FolderI, ImgI, initialFolderData } from "@/lib/firebaseTypes";
+import {
+  CreateFolderI,
+  FolderI,
+  ImgI,
+  initialFolderData,
+} from "@/lib/firebaseTypes";
 import React, { use } from "react";
 import "@/styles/control/folder-form.css";
 import ControlSection from "@/components/control/ControlSection";
@@ -18,14 +23,17 @@ export default function ControlFolderPage({
 }: {
   params: Promise<ParamsI>;
 }) {
-  const { folders, getImages, imgs } = useAppContext();
+  const { folders, getImages, imgs, editFolder, createFolder } =
+    useAppContext();
   const { id } = use(params);
 
-  const [initialData, setInitialData] = React.useState(() => {
-    let findFolder: FolderI | undefined = folders.find((el) => el.id === id);
+  const [initialData, setInitialData] = React.useState<FolderI | CreateFolderI>(
+    () => {
+      let findFolder: FolderI | undefined = folders.find((el) => el.id === id);
 
-    return findFolder ? findFolder : initialFolderData;
-  });
+      return findFolder ? findFolder : initialFolderData;
+    }
+  );
 
   const photos: ImgI[] = React.useMemo(
     () => (initialData ? getImages(initialData.images) : []),
@@ -33,9 +41,12 @@ export default function ControlFolderPage({
   );
 
   const handleSubmit = (formData: typeof initialData) => {
-    //submit new folder or update
-    //add initialData photos
     formData.images = initialData.images;
+    if ("id" in formData) {
+      editFolder(formData);
+    } else {
+      createFolder(formData);
+    }
   };
 
   const togglePhoto = (imgId: string) => {
@@ -50,10 +61,19 @@ export default function ControlFolderPage({
 
   return (
     <ControlSubpage
-      title={initialData.id ? "Edycja folderu" : "Tworzenie nowego folderu"}
+      title={
+        "id" in initialData ? "Edycja folderu" : "Tworzenie nowego folderu"
+      }
     >
       <div className="form-folder-wrapper">
-        <ControlForm onSubmit={handleSubmit} initialValue={initialData}>
+        <ControlForm
+          onSuccessMessage={
+            "id" in initialData ? "Edytowano folder" : "Utworzono nowy folder"
+          }
+          redirect="/control"
+          onSubmit={handleSubmit}
+          initialValue={initialData}
+        >
           {({ handleChange }) => (
             <>
               <ControlInput

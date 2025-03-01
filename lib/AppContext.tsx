@@ -4,7 +4,7 @@ import React from "react";
 import {
   AppContextPropI,
   ContextValuesI,
-  FolderFormI,
+  CreateFolderI,
   FolderI,
   ImgI,
 } from "./firebaseTypes";
@@ -112,11 +112,13 @@ export const AppContextProvider = ({
     return imgArray;
   }
 
-  async function createFolder(data: FolderFormI) {
+  async function createFolder(data: CreateFolderI) {
     //Add folder to DB
     const foldersRef = collection(db, "folders");
     const docRef = await addDoc(foldersRef, data);
 
+    const folderData = { ...data, id: docRef.id };
+    await setDoc(docRef, folderData);
     setFolders((prev) => [...prev, { ...data, id: docRef.id }]);
   }
 
