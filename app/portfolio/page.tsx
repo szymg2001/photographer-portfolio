@@ -8,6 +8,7 @@ import SingleFolder from "@/components/SingleFolder";
 
 export default function Portfolio() {
   const { folders, settings } = useAppContext();
+  const [publicFoldersNum, setPublicFoldersNum] = React.useState(2);
   const [publicFolders, setPublicFolders] = React.useState<FolderI[]>([]);
   const [highlighted, setHighlighted] = React.useState<FolderI[]>([]);
 
@@ -32,6 +33,12 @@ export default function Portfolio() {
     setPublicFolders(p);
   }, []);
 
+  const handleChangeFoldersNum = () => {
+    if (publicFoldersNum > publicFolders.length) return;
+
+    setPublicFoldersNum((prev) => prev + 3);
+  };
+
   return (
     <div className="portfolio">
       <div className="portfolio__highlighted">
@@ -42,10 +49,18 @@ export default function Portfolio() {
       <div className="portfolio__albums">
         <p className="portfolio__albums-title">Albumy</p>
         <div className="portfolio__albums-list">
-          {publicFolders.map((f) => (
+          {publicFolders.slice(0, publicFoldersNum).map((f) => (
             <SingleFolder folder={f} key={f.id} />
           ))}
         </div>
+        {publicFolders.length > publicFoldersNum && (
+          <button
+            onClick={handleChangeFoldersNum}
+            className="portfolio__albums__show-more"
+          >
+            Pokaż Więcej
+          </button>
+        )}
       </div>
     </div>
   );

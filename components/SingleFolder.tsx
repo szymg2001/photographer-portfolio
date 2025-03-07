@@ -14,8 +14,8 @@ export default function SingleFolder({ folder }: { folder: FolderI }) {
         src={getFolderCover(folder.id)}
         className="folder__cover"
         alt={`${folder.name} folder cover`}
-        width={325}
-        height={325}
+        width={600}
+        height={600}
       />
       <div className="folder__head">
         <p className="folder__name">{folder.name}</p>

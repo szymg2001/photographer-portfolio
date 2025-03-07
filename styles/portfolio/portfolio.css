@@ -7,31 +7,53 @@
   padding: 0px var(--padding-x);
 }
 
-.portfolio__albums-list {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  overflow-y: scroll;
-  gap: 30px 10px;
-  justify-content: space-between;
-}
-
 .portfolio__albums {
   background-color: var(--bg-dark);
   padding: 50px var(--padding-x);
   color: #fff;
 }
 
-.portfolio__albums-list > .folder {
-  justify-self: center;
+.portfolio__albums-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px 50px;
+  padding: 10px 0px;
+  justify-content: center;
 }
+
 .portfolio__albums-title {
   font-size: 35px;
   margin-bottom: 40px;
 }
 
-@media screen and (max-width: 1110px) {
-  .portfolio__albums-list {
-    height: calc(220px * 2 + 45px);
+/* .portfolio__albums__show-more {
+  font-size: 18px;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 10px;
+} */
+
+.portfolio__albums__show-more {
+  all: unset;
+  color: #fff;
+  font-size: 18px;
+  padding: 8px 15px;
+  background-color: var(--accent);
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.34);
+  cursor: pointer;
+  display: block;
+  margin: 35px auto 10px;
+  transition: 0.3s;
+}
+
+.portfolio__albums__show-more:hover {
+  filter: brightness(1.2);
+}
+
+@media screen and (max-width: 580px) {
+  .portfolio-layout {
+    padding-top: 20px;
   }
 }
