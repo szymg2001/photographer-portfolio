@@ -49,14 +49,40 @@
   background-color: white;
   padding: 10px;
   border-radius: 5px;
+  /*   width: 100px;
+  height: 100px; */
+
+  display: grid;
+  grid-template-rows: 0fr max-content;
+  grid-template-columns: 0fr;
+  transition: grid-template-rows 0.5s ease-in-out,
+    grid-template-columns 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.img-view.--isLoaded {
+  /*   width: fit-content;
+  height: fit-content; */
+  grid-template-rows: 1fr max-content;
+  grid-template-columns: 1fr;
+}
+
+.img-view__wrapper {
+  overflow: hidden;
 }
 
 .img-view__photo {
-  width: auto;
+  width: 100%;
   height: auto;
+  opacity: 0;
 
   max-width: 95vw;
   max-height: 90vh;
+  transition: opacity 2s;
+}
+
+.img-view.--isLoaded .img-view__photo {
+  opacity: 1;
 }
 
 .img-view__close {

@@ -24,7 +24,7 @@ export default function FolderPage({
   const folder = React.useMemo(() => getFolder(id), [id]);
   const photos = React.useMemo(() => getFolderImages(id), [folder, id]);
 
-  const [selectedPhoto, setSelectedPhoto] = React.useState(photos[0].url);
+  const [selectedPhoto, setSelectedPhoto] = React.useState<string | null>(null);
 
   if (!folder) {
     return (
@@ -46,6 +46,7 @@ export default function FolderPage({
         <ImgView
           src={selectedPhoto}
           onClose={() => {
+            setSelectedPhoto(null);
             closeDialog();
           }}
         />
