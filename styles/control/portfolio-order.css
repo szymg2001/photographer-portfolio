@@ -1,0 +1,20 @@
+.portfolio-order {
+  padding: 5px 0px 5px 45px;
+}
+
+.portfolio-order__menu {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.portfolio-order__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.portfolio-order__list-element {
+  display: flex;
+  gap: 7px;
+}
