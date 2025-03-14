@@ -74,7 +74,7 @@ export default function ControlFolderPage({
           onSubmit={handleSubmit}
           initialValue={initialData}
         >
-          {({ handleChange }) => (
+          {({ handleChange, formData }) => (
             <>
               <ControlInput
                 id="folder-form__name"
@@ -110,23 +110,32 @@ export default function ControlFolderPage({
                 type="checkbox"
                 defaultChecked={initialData.showInPortfolio}
               />
-              <ControlSection title="Zdjęcia">
+              <ControlSection
+                title="Zdjęcia"
+                note="Kliknij zdjęcie, aby ustawić je jako okładkę folderu."
+              >
                 <div className="folder-form__photos">
-                  {photos.map((p) => (
+                  {photos.map((p, index) => (
                     <img
                       src={p.url}
                       alt={p.id}
+                      onClick={() => handleChange("coverId", p.id)}
                       key={p.id}
-                      className="folder-form__image"
+                      className={`folder-form__image ${
+                        p.id === formData.coverId ||
+                        (formData.coverId === null && index === 0)
+                          ? "--isCover"
+                          : ""
+                      }`}
                     />
                   ))}
                 </div>
                 <ControlSection title="Wybierz zdjęcia">
                   <div className="folder-form__manage-photos">
-                    {imgs.map((p) => (
+                    {imgs.map((p, index) => (
                       <div
                         key={p.id}
-                        className="folder-form__manage-photo-wrapper"
+                        className={`folder-form__manage-photo-wrapper`}
                         onClick={() => togglePhoto(p.id)}
                       >
                         {photos.some((p2) => p2.id === p.id) ? (

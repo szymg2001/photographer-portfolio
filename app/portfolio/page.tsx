@@ -8,7 +8,7 @@ import SingleFolder from "@/components/SingleFolder";
 
 export default function Portfolio() {
   const { folders, settings } = useAppContext();
-  const [publicFoldersNum, setPublicFoldersNum] = React.useState(2);
+  const [publicFoldersNum, setPublicFoldersNum] = React.useState(3);
   const [publicFolders, setPublicFolders] = React.useState<FolderI[]>([]);
   const [highlighted, setHighlighted] = React.useState<FolderI[]>([]);
 

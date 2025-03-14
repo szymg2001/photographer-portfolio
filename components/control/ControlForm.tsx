@@ -5,6 +5,7 @@ import React from "react";
 interface ControlFormI<T> {
   children: (props: {
     handleChange: (key: keyof T, val: string | number | boolean) => void;
+    formData: T;
   }) => React.ReactNode;
   initialValue: T;
   onSubmit: (formData: T) => void | Promise<void>;
@@ -48,7 +49,7 @@ export default function ControlForm<T>({
 
   return (
     <form className="control-form" onSubmit={handleSubmit}>
-      {children({ handleChange })}
+      {children({ handleChange, formData })}
       <p className="control-form__error-message">{formError}</p>
       <p className="control-form__message">
         {formError && (

@@ -58,6 +58,18 @@ body {
   text-transform: uppercase;
 }
 
+.dialog-element {
+  position: fixed;
+  z-index: 10000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+}
+
 .dialog-element::backdrop {
   background: rgba(0, 0, 0, 0.54);
 }
