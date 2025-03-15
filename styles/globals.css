@@ -65,13 +65,17 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 30px;
+  padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 5px;
 }
 
 .dialog-element::backdrop {
   background: rgba(0, 0, 0, 0.54);
+}
+
+.dialog-element:focus {
+  outline: none;
 }
 
 @media screen and (max-width: 1250px) {

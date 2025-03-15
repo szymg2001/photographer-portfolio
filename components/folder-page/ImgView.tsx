@@ -26,12 +26,15 @@ export default function ImgView({ src, onClose }: ImgViewI) {
 
   return (
     <div className={`img-view ${!isLoading && "--isLoaded"}`}>
+      {/* {isLoading && (
+        <ClipLoader cssOverride={{ margin: "10px auto" }} size={50} />
+      )} */}
       <div className="img-view__wrapper">
         {src ? (
           <Image
             className="img-view__photo"
-            width={1000}
-            height={1000}
+            width={1500}
+            height={1500}
             src={src}
             alt="Pełny widok zdjęcia"
             onLoad={loadingComplete}
@@ -42,7 +45,7 @@ export default function ImgView({ src, onClose }: ImgViewI) {
         )}
       </div>
       <p className="img-view__close" onClick={() => onClose()}>
-        Zamknij
+        {isLoading ? <ClipLoader size={10} /> : "Zamknij"}
       </p>
     </div>
   );

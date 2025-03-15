@@ -41,20 +41,20 @@
 
 /*IMG VIEW*/
 .img-view {
-  position: fixed;
+  /*  position: fixed;
   z-index: 10000;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 5px; */
   /*   width: 100px;
   height: 100px; */
 
   display: grid;
   grid-template-rows: 0fr max-content;
-  grid-template-columns: 0fr;
+  grid-template-columns: max-content;
   transition: grid-template-rows 0.5s ease-in-out,
     grid-template-columns 0.5s ease-in-out;
   overflow: hidden;
@@ -64,7 +64,7 @@
   /*   width: fit-content;
   height: fit-content; */
   grid-template-rows: 1fr max-content;
-  grid-template-columns: 1fr;
+  grid-template-columns: max-content;
 }
 
 .img-view__wrapper {
@@ -73,6 +73,7 @@
 
 .img-view__photo {
   width: 100%;
+  /* width: 500px; */
   height: auto;
   opacity: 0;
 

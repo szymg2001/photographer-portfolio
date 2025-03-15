@@ -6,7 +6,7 @@
   --hero--menu-element-w: 150px;
   padding-left: var(--padding-x);
   display: grid;
-  overflow: hidden;
+  /* overflow: hidden; */
   grid-template-areas:
     "text photo"
     "text photo"
