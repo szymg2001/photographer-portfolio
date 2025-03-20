@@ -45,7 +45,9 @@ export interface ContextValuesI {
   createFolder: (data: CreateFolderI) => void;
   getImages: (idArray: string[]) => ImgI[];
   editFolder: (data: FolderI) => void;
-  changePortfolioOrder: (direction: -1 | 1, index: number) => void;
+  changePortfolioOrder: (
+    data: { direction: -1 | 1; index: number } | string[]
+  ) => void;
   getFolder: (id: string) => FolderI | null;
   getFolderCover: (id: string) => string;
   removeImg: (urls: string[]) => void;

@@ -132,7 +132,28 @@ export const AppContextProvider = ({
     ]);
   }
 
-  async function changePortfolioOrder(direction: -1 | 1, index: number) {
+  async function changePortfolioOrder(
+    data: { direction: -1 | 1; index: number } | string[]
+  ) {
+    let settingsRef = doc(db, "settings", "main");
+    let newOrder: string[] = [];
+
+    if ("direction" in data) {
+      let { direction, index } = data;
+
+      newOrder = [...settings.portfolioOrder];
+      let temp = settings.portfolioOrder[index];
+      newOrder[index] = newOrder[index + direction];
+      newOrder[index + direction] = temp;
+    } else {
+      newOrder = data;
+    }
+
+    await updateDoc(settingsRef, { portfolioOrder: newOrder });
+
+    setSettings((prev) => ({ ...prev, portfolioOrder: [...newOrder] }));
+  }
+  /* async function changePortfolioOrder(direction: -1 | 1, index: number) {
     if (index === 0 && direction === -1) return;
     if (index === settings.portfolioOrder.length - 1 && direction === 1) return;
 
@@ -145,7 +166,7 @@ export const AppContextProvider = ({
     await updateDoc(settingsRef, { portfolioOrder: newOrder });
 
     setSettings((prev) => ({ ...prev, portfolioOrder: [...newOrder] }));
-  }
+  } */
 
   function getFolderCover(id: string) {
     let folder = getFolder(id);
